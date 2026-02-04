@@ -13,10 +13,7 @@ please also help me address the following difficulties
 
 Difficulties and challenges:
 
-...
-
-...
-
-...
+I may be too slow to read the passages word by word 
+I cannot find the right words to express myself
 
 send the path of this file to AI agent
