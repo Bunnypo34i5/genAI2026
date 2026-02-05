@@ -1,0 +1,8 @@
+# Reflective Learning — process log
+
+## 2025-02-05
+
+- Created `reflectLearning.html` for Moodle based on `setup.md`.
+- Content: reminder for students to access GitHub repo and Google Docs notes; all links encapsulated in `<a href="...">`.
+- Created `process.log` in `courses/gcap3056/CourseInfo/ReflectiveLearning`.
+- Next: commit and push to remote GitHub.
