@@ -6,3 +6,9 @@
 - Content: reminder for students to access GitHub repo and Google Docs notes; all links encapsulated in `<a href="...">`.
 - Created `process.log` in `courses/gcap3056/CourseInfo/ReflectiveLearning`.
 - Next: commit and push to remote GitHub.
+
+## 2025-02-06 (or later)
+
+- Added `SyncGoogleDoc.md` instructions: fetch Google Doc tab → `GoogleDocsMoreInfo.md`.
+- Created `GoogleDocsMoreInfo.md` with link to the doc tab; automatic fetch not possible (Google Docs requires auth / JS). Placeholder and instructions for pasting tab content added.
+- Updated `process.log`.
