@@ -598,13 +598,15 @@ When students share web search results with you, analyze and summarize the key p
 
         // ===== WEB SEARCH FUNCTIONS =====
         
-        // Search Wikipedia API
+        // Search Wikipedia API - direct page lookup
         async function searchWikipedia(query) {
             try {
                 const url = `https://en.wikipedia.org/api/rest_v1/page/summary/${encodeURIComponent(query)}`;
+                console.log('Fetching Wikipedia:', url);
                 const response = await fetch(url);
                 if (response.ok) {
                     const data = await response.json();
+                    console.log('Wikipedia result:', data.title);
                     return {
                         title: data.title,
                         extract: data.extract,
@@ -622,10 +624,11 @@ When students share web search results with you, analyze and summarize the key p
         async function searchWikipediaMultiple(query) {
             try {
                 const url = `https://en.wikipedia.org/w/api.php?action=opensearch&search=${encodeURIComponent(query)}&limit=5&format=json&origin=*`;
+                console.log('Fetching Wikipedia multiple:', url);
                 const response = await fetch(url);
                 if (response.ok) {
                     const data = await response.json();
-                    // data format: [query, [titles], [descriptions], [urls]]
+                    console.log('Wikipedia multi results:', data[1]);
                     const results = [];
                     for (let i = 0; i < data[1].length; i++) {
                         results.push({
@@ -642,7 +645,57 @@ When students share web search results with you, analyze and summarize the key p
             return [];
         }
         
-        // Web search function
+        // Search DuckDuckGo Instant Answers API
+        async function searchDuckDuckGo(query) {
+            try {
+                // DuckDuckGo API - returns instant answers
+                const url = `https://api.duckduckgo.com/?q=${encodeURIComponent(query)}&format=json&no_html=1&skip_disambig=1`;
+                console.log('Fetching DuckDuckGo:', url);
+                const response = await fetch(url);
+                if (response.ok) {
+                    const data = await response.json();
+                    console.log('DuckDuckGo result:', data);
+                    return {
+                        abstract: data.Abstract,
+                        abstractText: data.AbstractText,
+                        abstractSource: data.AbstractSource,
+                        abstractURL: data.AbstractURL,
+                        heading: data.Heading,
+                        definition: data.Definition,
+                        definitionSource: data.DefinitionSource,
+                        answer: data.Answer,
+                        answerType: data.AnswerType,
+                        relatedTopics: data.RelatedTopics?.slice(0, 5) || [],
+                        infobox: data.Infobox
+                    };
+                }
+            } catch (e) {
+                console.log('DuckDuckGo search failed:', e);
+            }
+            return null;
+        }
+        
+        // Fetch full Wikipedia article content (first few sections)
+        async function fetchWikipediaContent(title) {
+            try {
+                const url = `https://en.wikipedia.org/w/api.php?action=query&titles=${encodeURIComponent(title)}&prop=extracts&exintro=1&explaintext=1&format=json&origin=*`;
+                console.log('Fetching Wikipedia content:', url);
+                const response = await fetch(url);
+                if (response.ok) {
+                    const data = await response.json();
+                    const pages = data.query.pages;
+                    const pageId = Object.keys(pages)[0];
+                    if (pageId !== '-1') {
+                        return pages[pageId].extract;
+                    }
+                }
+            } catch (e) {
+                console.log('Wikipedia content fetch failed:', e);
+            }
+            return null;
+        }
+        
+        // Web search function - combines multiple sources
         async function webSearch() {
             const input = document.getElementById('topicChatInput');
             const query = input.value.trim();
@@ -654,47 +707,114 @@ When students share web search results with you, analyze and summarize the key p
             input.value = '';
             
             // Show user's search query
-            addMessage('topicChatMessages', `🔍 Searching: "${query}"`, 'user');
+            addMessage('topicChatMessages', `🔍 Searching the web for: "${query}"`, 'user');
             topicChatHistory.push({ role: 'user', content: `Search for: ${query}` });
             
             // Show searching indicator
             const typingId = showTypingIndicator('topicChatMessages');
             
-            // Search Wikipedia
-            const wikiResult = await searchWikipedia(query);
-            const wikiMultiple = await searchWikipediaMultiple(query);
+            // Search multiple sources in parallel
+            const [wikiResult, wikiMultiple, ddgResult] = await Promise.all([
+                searchWikipedia(query),
+                searchWikipediaMultiple(query),
+                searchDuckDuckGo(query)
+            ]);
+            
+            // If we got Wikipedia titles, fetch more content for the first one
+            let wikiFullContent = null;
+            if (wikiMultiple.length > 0) {
+                wikiFullContent = await fetchWikipediaContent(wikiMultiple[0].title);
+            }
             
             removeTypingIndicator(typingId);
             
             // Build search results message
             let resultMessage = `## 🌐 Web Search Results for "${query}"\n\n`;
+            let foundContent = false;
             
-            if (wikiResult && wikiResult.extract) {
-                resultMessage += `### 📚 Wikipedia Summary\n\n`;
-                resultMessage += `**${wikiResult.title}**\n\n`;
-                resultMessage += `${wikiResult.extract}\n\n`;
-                resultMessage += `[Read more on Wikipedia](${wikiResult.url})\n\n`;
+            // DuckDuckGo Instant Answer (often has quick definitions/answers)
+            if (ddgResult && (ddgResult.abstract || ddgResult.answer || ddgResult.definition)) {
+                foundContent = true;
+                resultMessage += `### 📋 Quick Answer\n\n`;
+                
+                if (ddgResult.answer) {
+                    resultMessage += `**Answer:** ${ddgResult.answer}\n\n`;
+                }
+                
+                if (ddgResult.definition) {
+                    resultMessage += `**Definition:** ${ddgResult.definition}\n`;
+                    if (ddgResult.definitionSource) {
+                        resultMessage += `*(Source: ${ddgResult.definitionSource})*\n\n`;
+                    }
+                }
+                
+                if (ddgResult.abstractText) {
+                    resultMessage += `${ddgResult.abstractText}\n`;
+                    if (ddgResult.abstractSource && ddgResult.abstractURL) {
+                        resultMessage += `\n*Source: [${ddgResult.abstractSource}](${ddgResult.abstractURL})*\n\n`;
+                    }
+                }
             }
             
-            if (wikiMultiple.length > 0) {
-                resultMessage += `### 📖 Related Topics\n\n`;
-                wikiMultiple.forEach(item => {
-                    resultMessage += `- **[${item.title}](${item.url})**: ${item.description || 'No description'}\n`;
+            // Wikipedia Summary
+            if (wikiResult && wikiResult.extract) {
+                foundContent = true;
+                resultMessage += `### 📚 Wikipedia: ${wikiResult.title}\n\n`;
+                resultMessage += `${wikiResult.extract}\n\n`;
+                if (wikiResult.url) {
+                    resultMessage += `[Read full article →](${wikiResult.url})\n\n`;
+                }
+            } else if (wikiFullContent) {
+                foundContent = true;
+                // Truncate if too long
+                const content = wikiFullContent.length > 1000 
+                    ? wikiFullContent.substring(0, 1000) + '...' 
+                    : wikiFullContent;
+                resultMessage += `### 📚 Wikipedia: ${wikiMultiple[0].title}\n\n`;
+                resultMessage += `${content}\n\n`;
+                resultMessage += `[Read full article →](${wikiMultiple[0].url})\n\n`;
+            }
+            
+            // Related topics from DuckDuckGo
+            if (ddgResult && ddgResult.relatedTopics.length > 0) {
+                foundContent = true;
+                resultMessage += `### 🔗 Related Topics\n\n`;
+                ddgResult.relatedTopics.forEach(topic => {
+                    if (topic.Text && topic.FirstURL) {
+                        const text = topic.Text.length > 150 ? topic.Text.substring(0, 150) + '...' : topic.Text;
+                        resultMessage += `- **${topic.Text.split(' - ')[0]}**: ${text}\n`;
+                    }
                 });
                 resultMessage += `\n`;
             }
             
-            // Add links to external search engines
-            resultMessage += `### 🔗 Search More\n\n`;
-            resultMessage += `- [DuckDuckGo](https://duckduckgo.com/?q=${encodeURIComponent(query)})\n`;
-            resultMessage += `- [Google Scholar](https://scholar.google.com/scholar?q=${encodeURIComponent(query)})\n`;
-            resultMessage += `- [Google](https://www.google.com/search?q=${encodeURIComponent(query)})\n\n`;
-            
-            if (!wikiResult && wikiMultiple.length === 0) {
-                resultMessage += `*No Wikipedia results found. Try the search links above for more results.*\n`;
+            // More Wikipedia results
+            if (wikiMultiple.length > 1) {
+                resultMessage += `### 📖 More Wikipedia Articles\n\n`;
+                wikiMultiple.slice(1).forEach(item => {
+                    resultMessage += `- [${item.title}](${item.url})`;
+                    if (item.description) {
+                        resultMessage += `: ${item.description}`;
+                    }
+                    resultMessage += `\n`;
+                });
+                resultMessage += `\n`;
             }
             
-            resultMessage += `---\n*Click 🌐 again to search for something else, or ask the AI (➤) to help you understand these results.*`;
+            // Search engine links
+            resultMessage += `### 🔍 Search More\n\n`;
+            resultMessage += `- [Google Scholar](https://scholar.google.com/scholar?q=${encodeURIComponent(query)}) - Academic papers\n`;
+            resultMessage += `- [Google](https://www.google.com/search?q=${encodeURIComponent(query)}) - Web search\n`;
+            resultMessage += `- [DuckDuckGo](https://duckduckgo.com/?q=${encodeURIComponent(query)}) - Private search\n\n`;
+            
+            if (!foundContent) {
+                resultMessage += `⚠️ *No instant results found for this query. Try:\n`;
+                resultMessage += `- Using more specific terms\n`;
+                resultMessage += `- Clicking the search links above\n`;
+                resultMessage += `- Asking the AI (➤) about this topic*\n\n`;
+            }
+            
+            resultMessage += `---\n💡 *Tip: Ask the AI (➤) to analyze these results or explain concepts in more detail.*`;
             
             addMessage('topicChatMessages', resultMessage, 'assistant');
             topicChatHistory.push({ role: 'assistant', content: resultMessage });
