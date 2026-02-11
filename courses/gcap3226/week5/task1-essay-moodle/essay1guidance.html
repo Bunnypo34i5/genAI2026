@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📝 Reflective Essay 1 - Interactive Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .progress-container {
+            background: #f8f9fa;
+            padding: 20px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 30px;
+            background: #e9ecef;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            width: 0%;
+            transition: width 0.5s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 10px;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #6c757d;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .step {
+            background: #f8f9fa;
+            border-left: 5px solid #6c757d;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .step.active {
+            border-left-color: #667eea;
+            background: #e7f3ff;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+        }
+
+        .step.completed {
+            border-left-color: #28a745;
+            background: #d4edda;
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+            margin-bottom: 15px;
+        }
+
+        .step-title {
+            font-size: 1.8rem;
+            color: #495057;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .step-time {
+            background: #667eea;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+
+        .step-content {
+            margin-top: 15px;
+        }
+
+        .checklist {
+            list-style: none;
+            margin: 15px 0;
+        }
+
+        .checklist li {
+            padding: 12px;
+            margin: 8px 0;
+            background: white;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .checklist li:hover {
+            transform: translateX(5px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .checklist input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .prompt-box {
+            background: white;
+            border: 2px solid #667eea;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+        }
+
+        .prompt-box h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .brainstorm-input {
+            width: 100%;
+            min-height: 80px;
+            padding: 12px;
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            margin-top: 10px;
+            resize: vertical;
+        }
+
+        .brainstorm-input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .tip-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .tip-box strong {
+            color: #856404;
+        }
+
+        .success-box {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .warning-box {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+
+        .button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .button:active {
+            transform: translateY(0);
+        }
+
+        .word-counter {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #667eea;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            font-weight: bold;
+            z-index: 1000;
+        }
+
+        .achievement {
+            display: inline-block;
+            background: #ffc107;
+            color: #856404;
+            padding: 8px 15px;
+            border-radius: 20px;
+            margin: 5px;
+            font-weight: bold;
+            animation: pop 0.5s ease;
+        }
+
+        @keyframes pop {
+            0% { transform: scale(0); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .achievements-container {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .sample-toggle {
+            background: #e7f3ff;
+            border: 2px dashed #667eea;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 10px;
+            cursor: pointer;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .sample-toggle:hover {
+            background: #d0e9ff;
+        }
+
+        .sample-content {
+            display: none;
+            margin-top: 10px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 15px 0;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .step-title {
+                font-size: 1.3rem;
+            }
+        }
+
+        .timer {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #667eea;
+            text-align: center;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .timer-controls {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        .submit-checklist {
+            background: linear-gradient(135deg, #28a745 0%, #20c997 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+
+        .submit-checklist h3 {
+            margin-bottom: 20px;
+        }
+
+        .collapsible {
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .collapsible::after {
+            content: ' ▼';
+            font-size: 0.8em;
+        }
+
+        .collapsible.active::after {
+            content: ' ▲';
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📝 Reflective Essay 1</h1>
+            <p><strong>GCAP 3226:</strong> Interactive Step-by-Step Guide</p>
+            <p>Due: October 5, 2025 at 11:00 PM • Length: ~200 words</p>
+        </div>
+
+        <div class="progress-container">
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill">0%</div>
+            </div>
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-value" id="completedSteps">0</div>
+                    <div class="stat-label">Steps Completed</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="totalPoints">0</div>
+                    <div class="stat-label">Points Earned</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value" id="timeSpent">0</div>
+                    <div class="stat-label">Minutes Spent</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="achievementsContainer" class="achievements-container" style="display: none;">
+            <h3>🏆 Achievements Unlocked</h3>
+            <div id="achievements"></div>
+        </div>
+
+        <div class="content">
+            <!-- Step 1: Understanding -->
+            <div class="step active" data-step="1">
+                <div class="step-header collapsible">
+                    <div class="step-title">
+                        <span>🎯</span>
+                        <span>Step 1: Understand the Assignment</span>
+                    </div>
+                    <div class="step-time">5 min</div>
+                </div>
+                <div class="step-content">
+                    <h3>What You'll Reflect On:</h3>
+                    <div class="grid-2">
+                        <div class="prompt-box">
+                            <h4>📈 Regression Analysis</h4>
+                            <p>Statistical modeling for understanding relationships between variables and making predictions</p>
+                        </div>
+                        <div class="prompt-box">
+                            <h4>🎯 Simulation Modeling</h4>
+                            <p>Creating virtual models to test scenarios and understand complex system behaviors</p>
+                        </div>
+                    </div>
+
+                    <div class="tip-box">
+                        <strong>💡 Your Mission:</strong> Write ~200 words reflecting on BOTH techniques, connecting them to your group project, and sharing personal learning insights.
+                    </div>
+
+                    <h3 style="margin-top: 20px;">Assessment Breakdown (100 points):</h3>
+                    <ul class="checklist" id="assessment-checklist">
+                        <li><input type="checkbox"> <strong>Content Quality (70 pts)</strong> — Reflection depth, model understanding, project integration, critical analysis</li>
+                        <li><input type="checkbox"> <strong>Presentation Quality (30 pts)</strong> — Writing clarity, organization, formatting</li>
+                        <li><input type="checkbox"> I understand how my essay will be graded</li>
+                    </ul>
+
+                    <div style="text-align: center; margin-top: 20px;">
+                        <button class="button" onclick="completeStep(1)">✓ I Understand — Next Step</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: Brainstorming -->
+            <div class="step" data-step="2">
+                <div class="step-header collapsible">
+                    <div class="step-title">
+                        <span>🧠</span>
+                        <span>Step 2: Brainstorm Your Ideas</span>
+                    </div>
+                    <div class="step-time">15 min</div>
+                </div>
+                <div class="step-content">
+                    <div class="timer" id="timer2">
+                        <div id="timerDisplay2">15:00</div>
+                        <div class="timer-controls">
+                            <button class="button" onclick="startTimer(15, 'timerDisplay2')">Start Timer</button>
+                            <button class="button" onclick="resetTimer('timerDisplay2', 15)">Reset</button>
+                        </div>
+                    </div>
+
+                    <h3>Brainstorming Prompts:</h3>
+                    
+                    <div class="prompt-box">
+                        <h4>📈 About Regression Analysis:</h4>
+                        <ul style="margin-left: 20px;">
+                            <li>What surprised you most about regression modeling?</li>
+                            <li>Which techniques did you find most challenging? Most useful?</li>
+                            <li>Can you recall a moment when regression "clicked" for you?</li>
+                        </ul>
+                        <textarea class="brainstorm-input" placeholder="Type your thoughts here..." oninput="updateWordCount()"></textarea>
+                    </div>
+
+                    <div class="prompt-box">
+                        <h4>🎯 About Simulation Modeling:</h4>
+                        <ul style="margin-left: 20px;">
+                            <li>What was your first reaction to simulation concepts?</li>
+                            <li>How does simulation differ from regression in your mind?</li>
+                            <li>What examples helped you understand simulation best?</li>
+                        </ul>
+                        <textarea class="brainstorm-input" placeholder="Type your thoughts here..." oninput="updateWordCount()"></textarea>
+                    </div>
+
+                    <div class="prompt-box">
+                        <h4>🔗 Connecting to Your Project:</h4>
+                        <ul style="margin-left: 20px;">
+                            <li>Which approach seems more relevant to your group project?</li>
+                            <li>Could you use regression to analyze your project data?</li>
+                            <li>Could simulation help model scenarios in your project?</li>
+                        </ul>
+                        <textarea class="brainstorm-input" placeholder="Type your thoughts here..." oninput="updateWordCount()"></textarea>
+                    </div>
+
+                    <div class="prompt-box">
+                        <h4>💡 Personal Learning Journey:</h4>
+                        <ul style="margin-left: 20px;">
+                            <li>What "aha!" moments did you experience?</li>
+                            <li>What was harder than expected? Easier?</li>
+                            <li>How has your confidence with data modeling changed?</li>
+                        </ul>
+                        <textarea class="brainstorm-input" placeholder="Type your thoughts here..." oninput="updateWordCount()"></textarea>
+                    </div>
+
+                    <ul class="checklist">
+                        <li><input type="checkbox"> I've thought about regression learning</li>
+                        <li><input type="checkbox"> I've thought about simulation learning</li>
+                        <li><input type="checkbox"> I've connected ideas to my project</li>
+                        <li><input type="checkbox"> I've identified personal insights</li>
+                    </ul>
+
+                    <div style="text-align: center; margin-top: 20px;">
+                        <button class="button" onclick="completeStep(2)">✓ Brainstorming Complete — Next Step</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3: Drafting -->
+            <div class="step" data-step="3">
+                <div class="step-header collapsible">
+                    <div class="step-title">
+                        <span>✍️</span>
+                        <span>Step 3: Draft Your Essay</span>
+                    </div>
+                    <div class="step-time">20 min</div>
+                </div>
+                <div class="step-content">
+                    <div class="timer" id="timer3">
+                        <div id="timerDisplay3">20:00</div>
+                        <div class="timer-controls">
+                            <button class="button" onclick="startTimer(20, 'timerDisplay3')">Start Timer</button>
+                            <button class="button" onclick="resetTimer('timerDisplay3', 20)">Reset</button>
+                        </div>
+                    </div>
+
+                    <h3>Suggested Structure (200 words):</h3>
+                    
+                    <div class="prompt-box">
+                        <h4>Opening (30-40 words)</h4>
+                        <p>Introduce what you're reflecting on and preview your main insight</p>
+                        <div class="sample-toggle" onclick="toggleSample('sample1')">
+                            💡 Click to see sample opening sentences
+                        </div>
+                        <div class="sample-content" id="sample1">
+                            <p><em>"Exploring regression and simulation modeling in GCAP 3226 has fundamentally changed how I approach data analysis..."</em></p>
+                            <p><em>"Initially, I viewed regression and simulation as similar techniques, but through our coursework I've discovered..."</em></p>
+                            <p><em>"The most significant insight from learning regression and simulation modeling has been understanding when to apply each approach..."</em></p>
+                        </div>
+                        <textarea class="brainstorm-input" id="draftOpening" placeholder="Write your opening here..." oninput="updateDraftWordCount()"></textarea>
+                    </div>
+
+                    <div class="prompt-box">
+                        <h4>Main Body - Para 1 (40-50 words)</h4>
+                        <p><strong>Focus:</strong> Your learning with regression and simulation</p>
+                        <ul style="margin-left: 20px;">
+                            <li>What you learned about each approach</li>
+                            <li>How they differ or complement each other</li>
+                            <li>Specific examples from class</li>
+                        </ul>
+                        <textarea class="brainstorm-input" id="draftBody1" placeholder="Write paragraph 1 here..." oninput="updateDraftWordCount()"></textarea>
+                    </div>
+
+                    <div class="prompt-box">
+                        <h4>Main Body - Para 2 (40-50 words)</h4>
+                        <p><strong>Focus:</strong> Connect to your group project</p>
+                        <ul style="margin-left: 20px;">
+                            <li>Which technique(s) could apply</li>
+                            <li>How these models change your project thinking</li>
+                            <li>Potential applications</li>
+                        </ul>
+                        <textarea class="brainstorm-input" id="draftBody2" placeholder="Write paragraph 2 here..." oninput="updateDraftWordCount()"></textarea>
+                    </div>
+
+                    <div class="prompt-box">
+                        <h4>Main Body - Para 3 (40-50 words)</h4>
+                        <p><strong>Focus:</strong> Personal insights and growth</p>
+                        <ul style="margin-left: 20px;">
+                            <li>Challenges you overcame</li>
+                            <li>Key "aha!" moments</li>
+                            <li>How your understanding evolved</li>
+                        </ul>
+                        <textarea class="brainstorm-input" id="draftBody3" placeholder="Write paragraph 3 here..." oninput="updateDraftWordCount()"></textarea>
+                    </div>
+
+                    <div class="prompt-box">
+                        <h4>Conclusion (30-40 words)</h4>
+                        <p>Summarize key learning and look forward to applying these skills</p>
+                        <textarea class="brainstorm-input" id="draftConclusion" placeholder="Write your conclusion here..." oninput="updateDraftWordCount()"></textarea>
+                    </div>
+
+                    <div class="success-box">
+                        <strong>📊 Draft Word Count:</strong> <span id="draftWordCount" style="font-size: 1.5rem; font-weight: bold;">0</span> words
+                        <div id="wordCountFeedback"></div>
+                    </div>
+
+                    <div class="tip-box">
+                        <strong>✅ Do:</strong> Use first person, be specific, include examples, show critical thinking<br>
+                        <strong>❌ Don't:</strong> Just summarize content, be vague, skip project connection
+                    </div>
+
+                    <ul class="checklist">
+                        <li><input type="checkbox"> Opening written (30-40 words)</li>
+                        <li><input type="checkbox"> Body paragraph 1 complete</li>
+                        <li><input type="checkbox"> Body paragraph 2 complete</li>
+                        <li><input type="checkbox"> Body paragraph 3 complete</li>
+                        <li><input type="checkbox"> Conclusion written (30-40 words)</li>
+                        <li><input type="checkbox"> Total word count is 180-220</li>
+                    </ul>
+
+                    <div style="text-align: center; margin-top: 20px;">
+                        <button class="button" onclick="completeStep(3)">✓ Draft Complete — Next Step</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4: Review -->
+            <div class="step" data-step="4">
+                <div class="step-header collapsible">
+                    <div class="step-title">
+                        <span>🔍</span>
+                        <span>Step 4: Review and Polish</span>
+                    </div>
+                    <div class="step-time">10 min</div>
+                </div>
+                <div class="step-content">
+                    <div class="timer" id="timer4">
+                        <div id="timerDisplay4">10:00</div>
+                        <div class="timer-controls">
+                            <button class="button" onclick="startTimer(10, 'timerDisplay4')">Start Timer</button>
+                            <button class="button" onclick="resetTimer('timerDisplay4', 10)">Reset</button>
+                        </div>
+                    </div>
+
+                    <h3>Content Quality Checklist:</h3>
+                    <ul class="checklist" id="content-checklist">
+                        <li><input type="checkbox"> Reflects on BOTH regression and simulation</li>
+                        <li><input type="checkbox"> Demonstrates understanding of each approach</li>
+                        <li><input type="checkbox"> Connects techniques to group project</li>
+                        <li><input type="checkbox"> Includes personal insights or "aha!" moments</li>
+                        <li><input type="checkbox"> Shows critical thinking about applications</li>
+                        <li><input type="checkbox"> Demonstrates how understanding has evolved</li>
+                        <li><input type="checkbox"> Word count is 180-220 words</li>
+                    </ul>
+
+                    <h3 style="margin-top: 20px;">Presentation Quality Checklist:</h3>
+                    <ul class="checklist" id="presentation-checklist">
+                        <li><input type="checkbox"> Writing is clear and engaging</li>
+                        <li><input type="checkbox"> Ideas flow logically</li>
+                        <li><input type="checkbox"> No grammar or spelling errors</li>
+                        <li><input type="checkbox"> Professional tone maintained</li>
+                        <li><input type="checkbox"> Specific examples included</li>
+                        <li><input type="checkbox"> Authentic voice evident</li>
+                    </ul>
+
+                    <div class="prompt-box">
+                        <h4>Self-Review Questions:</h4>
+                        <ol style="margin-left: 20px;">
+                            <li>Does this sound like genuine reflection or just course summary?</li>
+                            <li>Have I shown real understanding of both modeling approaches?</li>
+                            <li>Is the connection to my project meaningful and specific?</li>
+                            <li>Would a reader understand what I've learned and how I've grown?</li>
+                            <li>Is my writing clear, concise, and well-organized?</li>
+                        </ol>
+                    </div>
+
+                    <div class="tip-box">
+                        <strong>💡 Pro Tip:</strong> Read your essay out loud. If something sounds awkward, it probably is!
+                    </div>
+
+                    <div style="text-align: center; margin-top: 20px;">
+                        <button class="button" onclick="completeStep(4)">✓ Review Complete — Ready to Submit</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 5: Submit -->
+            <div class="step" data-step="5">
+                <div class="step-header collapsible">
+                    <div class="step-title">
+                        <span>📤</span>
+                        <span>Step 5: Submit Your Essay</span>
+                    </div>
+                    <div class="step-time">5 min</div>
+                </div>
+                <div class="step-content">
+                    <div class="submit-checklist">
+                        <h3>🎯 Pre-Submission Final Check:</h3>
+                        <ul class="checklist" id="final-checklist" style="color: white;">
+                            <li style="background: rgba(255,255,255,0.2);"><input type="checkbox"> Essay is 180-220 words</li>
+                            <li style="background: rgba(255,255,255,0.2);"><input type="checkbox"> All required elements included</li>
+                            <li style="background: rgba(255,255,255,0.2);"><input type="checkbox"> Proofread for errors</li>
+                            <li style="background: rgba(255,255,255,0.2);"><input type="checkbox"> Submitting before October 5, 11:00 PM</li>
+                            <li style="background: rgba(255,255,255,0.2);"><input type="checkbox"> Saved a backup copy</li>
+                        </ul>
+                    </div>
+
+                    <h3>Submission Options:</h3>
+                    <div class="grid-2">
+                        <div class="prompt-box">
+                            <h4>📝 Option A: Plain Text</h4>
+                            <ol style="margin-left: 20px;">
+                                <li>Go to <a href="https://buelearning.hkbu.edu.hk/mod/assign/view.php?id=1922859" target="_blank">Moodle Assignment</a></li>
+                                <li>Paste your essay in the text box</li>
+                                <li>Click "Submit assignment"</li>
+                            </ol>
+                        </div>
+                        <div class="prompt-box">
+                            <h4>🔗 Option B: GitHub Link</h4>
+                            <ol style="margin-left: 20px;">
+                                <li>Save essay as .md or .txt file</li>
+                                <li>Commit and push to your fork</li>
+                                <li>Get the file URL</li>
+                                <li>Submit URL via <a href="https://buelearning.hkbu.edu.hk/mod/assign/view.php?id=1922859" target="_blank">Moodle</a></li>
+                            </ol>
+                        </div>
+                    </div>
+
+                    <div class="warning-box">
+                        <strong>⚠️ Important Reminders:</strong>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li><strong>Deadline:</strong> Friday, October 5, 2025 at 11:00 PM</li>
+                            <li><strong>Late Penalty:</strong> 10% deduction per day</li>
+                            <li><strong>Academic Integrity:</strong> Must be your own authentic reflection</li>
+                        </ul>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 20px;">
+                        <button class="button" onclick="completeStep(5)" style="background: linear-gradient(135deg, #28a745 0%, #20c997 100%); font-size: 1.2rem; padding: 15px 40px;">
+                            🎉 Mark as Submitted!
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Resources Section -->
+            <div class="step" data-step="6">
+                <div class="step-header collapsible">
+                    <div class="step-title">
+                        <span>📚</span>
+                        <span>Resources & Help</span>
+                    </div>
+                    <div class="step-time">As needed</div>
+                </div>
+                <div class="step-content">
+                    <div class="grid-2">
+                        <div class="prompt-box">
+                            <h4>📖 Course Materials</h4>
+                            <ul style="margin-left: 20px;">
+                                <li>Week 4 regression & simulation materials</li>
+                                <li>Your group project documents</li>
+                                <li>Lecture notes and exercises</li>
+                                <li>Week 5 README files</li>
+                            </ul>
+                        </div>
+                        <div class="prompt-box">
+                            <h4>💬 Getting Help</h4>
+                            <ul style="margin-left: 20px;">
+                                <li><strong>Assignment questions:</strong> Email Dr. Wu or Dr. Wang</li>
+                                <li><strong>Writing support:</strong> Office hours</li>
+                                <li><strong>Technical issues:</strong> Check repository</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="tip-box">
+                        <strong>🤖 Using AI Tools Ethically:</strong>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>✅ Use AI for brainstorming and feedback</li>
+                            <li>✅ Use AI to check grammar</li>
+                            <li>❌ Don't let AI write the essay for you</li>
+                            <li>❌ Final submission must be your authentic reflection</li>
+                        </ul>
+                    </div>
+
+                    <div class="success-box">
+                        <strong>🌟 Excellence Markers (90-100 points):</strong>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>Deep, genuine reflection showing real learning</li>
+                            <li>Clear understanding of both techniques</li>
+                            <li>Meaningful, specific project connections</li>
+                            <li>Insightful critical thinking</li>
+                            <li>Excellent, engaging writing</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="word-counter" id="wordCounter" style="display: none;">
+        Words: <span id="totalWordCount">0</span>
+    </div>
+
+    <script>
+        let completedStepsCount = 0;
+        let totalPointsEarned = 0;
+        let startTime = Date.now();
+        let achievements = [];
+        let timerIntervals = {};
+
+        // Update time spent every minute
+        setInterval(() => {
+            const minutes = Math.floor((Date.now() - startTime) / 60000);
+            document.getElementById('timeSpent').textContent = minutes;
+        }, 60000);
+
+        // Collapsible sections
+        document.querySelectorAll('.collapsible').forEach(header => {
+            header.addEventListener('click', function() {
+                this.classList.toggle('active');
+                const content = this.nextElementSibling;
+                if (content.style.display === 'none') {
+                    content.style.display = 'block';
+                } else {
+                    content.style.display = 'none';
+                }
+            });
+        });
+
+        // Complete step function
+        function completeStep(stepNumber) {
+            const step = document.querySelector(`[data-step="${stepNumber}"]`);
+            if (!step.classList.contains('completed')) {
+                step.classList.remove('active');
+                step.classList.add('completed');
+                completedStepsCount++;
+                totalPointsEarned += 20;
+                
+                updateProgress();
+                checkAchievements(stepNumber);
+                
+                // Activate next step
+                const nextStep = document.querySelector(`[data-step="${stepNumber + 1}"]`);
+                if (nextStep) {
+                    nextStep.classList.add('active');
+                    nextStep.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+                
+                // Show celebration for final step
+                if (stepNumber === 5) {
+                    setTimeout(() => {
+                        alert('🎉 Congratulations! You\'ve completed all steps. Your essay is ready to submit!');
+                    }, 500);
+                }
+            }
+        }
+
+        // Update progress
+        function updateProgress() {
+            const progress = (completedStepsCount / 5) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+            document.getElementById('progressFill').textContent = Math.round(progress) + '%';
+            document.getElementById('completedSteps').textContent = completedStepsCount;
+            document.getElementById('totalPoints').textContent = totalPointsEarned;
+        }
+
+        // Check and award achievements
+        function checkAchievements(stepNumber) {
+            const achievementsList = {
+                1: { name: '🎓 Scholar', text: 'Understanding unlocked!' },
+                2: { name: '💡 Thinker', text: 'Brainstorming master!' },
+                3: { name: '✍️ Writer', text: 'Draft completed!' },
+                4: { name: '🔍 Perfectionist', text: 'Review champion!' },
+                5: { name: '🏆 Achiever', text: 'All done!' }
+            };
+            
+            const achievement = achievementsList[stepNumber];
+            if (achievement && !achievements.includes(stepNumber)) {
+                achievements.push(stepNumber);
+                showAchievement(achievement);
+            }
+        }
+
+        // Show achievement
+        function showAchievement(achievement) {
+            const container = document.getElementById('achievementsContainer');
+            const achievementsDiv = document.getElementById('achievements');
+            container.style.display = 'block';
+            
+            const badge = document.createElement('span');
+            badge.className = 'achievement';
+            badge.textContent = `${achievement.name}: ${achievement.text}`;
+            achievementsDiv.appendChild(badge);
+        }
+
+        // Timer functions
+        function startTimer(minutes, displayId) {
+            if (timerIntervals[displayId]) {
+                clearInterval(timerIntervals[displayId]);
+            }
+            
+            let totalSeconds = minutes * 60;
+            const display = document.getElementById(displayId);
+            
+            timerIntervals[displayId] = setInterval(() => {
+                totalSeconds--;
+                const mins = Math.floor(totalSeconds / 60);
+                const secs = totalSeconds % 60;
+                display.textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+                
+                if (totalSeconds <= 0) {
+                    clearInterval(timerIntervals[displayId]);
+                    display.textContent = '⏰ Time\'s up!';
+                    alert('⏰ Timer completed! Great work!');
+                }
+            }, 1000);
+        }
+
+        function resetTimer(displayId, minutes) {
+            if (timerIntervals[displayId]) {
+                clearInterval(timerIntervals[displayId]);
+            }
+            document.getElementById(displayId).textContent = `${minutes}:00`;
+        }
+
+        // Word counting
+        function updateWordCount() {
+            const textareas = document.querySelectorAll('.brainstorm-input');
+            let totalWords = 0;
+            textareas.forEach(textarea => {
+                const text = textarea.value.trim();
+                if (text) {
+                    totalWords += text.split(/\s+/).length;
+                }
+            });
+            
+            if (totalWords > 0) {
+                document.getElementById('wordCounter').style.display = 'block';
+                document.getElementById('totalWordCount').textContent = totalWords;
+            }
+        }
+
+        // Draft word counting
+        function updateDraftWordCount() {
+            const draftIds = ['draftOpening', 'draftBody1', 'draftBody2', 'draftBody3', 'draftConclusion'];
+            let totalWords = 0;
+            
+            draftIds.forEach(id => {
+                const text = document.getElementById(id).value.trim();
+                if (text) {
+                    totalWords += text.split(/\s+/).length;
+                }
+            });
+            
+            document.getElementById('draftWordCount').textContent = totalWords;
+            
+            const feedback = document.getElementById('wordCountFeedback');
+            if (totalWords === 0) {
+                feedback.textContent = '';
+            } else if (totalWords < 180) {
+                feedback.textContent = `Need ${180 - totalWords} more words to reach minimum`;
+                feedback.style.color = '#dc3545';
+            } else if (totalWords > 220) {
+                feedback.textContent = `${totalWords - 220} words over maximum — consider trimming`;
+                feedback.style.color = '#ffc107';
+            } else {
+                feedback.textContent = '✓ Perfect word count!';
+                feedback.style.color = '#28a745';
+            }
+        }
+
+        // Sample toggle
+        function toggleSample(id) {
+            const sample = document.getElementById(id);
+            sample.style.display = sample.style.display === 'block' ? 'none' : 'block';
+        }
+
+        // Auto-save to localStorage
+        setInterval(() => {
+            const textareas = document.querySelectorAll('.brainstorm-input');
+            textareas.forEach((textarea, index) => {
+                localStorage.setItem(`essay-draft-${index}`, textarea.value);
+            });
+        }, 30000);
+
+        // Load saved drafts on page load
+        window.addEventListener('load', () => {
+            const textareas = document.querySelectorAll('.brainstorm-input');
+            textareas.forEach((textarea, index) => {
+                const saved = localStorage.getItem(`essay-draft-${index}`);
+                if (saved) {
+                    textarea.value = saved;
+                }
+            });
+            updateWordCount();
+            updateDraftWordCount();
+        });
+
+        // Track checkbox progress
+        document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const checklist = this.closest('.checklist');
+                if (checklist) {
+                    const total = checklist.querySelectorAll('input[type="checkbox"]').length;
+                    const checked = checklist.querySelectorAll('input[type="checkbox"]:checked').length;
+                    
+                    if (checked === total && !checklist.dataset.completed) {
+                        checklist.dataset.completed = 'true';
+                        totalPointsEarned += 5;
+                        updateProgress();
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
