@@ -1,0 +1,52 @@
+[2025-02-06] Process started for answer sheet conversion.
+Input: one-side-answer-sheet.pdf
+Tasks: 1) Move lines to centre 2) Duplicate for two-sided printing
+Output: two-side-answer-sheet.pdf
+[INFO] Input: /Users/simonwang/Library/CloudStorage/OneDrive-HongKongBaptistUniversity/GTD/Areas/Teaching/Courses/GCAP 3056/genAI2026/courses/UCLC1008/AIagentDemo/MockPractice/one-side-answer-sheet.pdf
+[INFO] Output: /Users/simonwang/Library/CloudStorage/OneDrive-HongKongBaptistUniversity/GTD/Areas/Teaching/Courses/GCAP 3056/genAI2026/courses/UCLC1008/AIagentDemo/MockPractice/answerSheet/two-side-answer-sheet.pdf
+[STEP 1] Opening PDF and rendering to image...
+[INFO] Rendered size: 1191 x 1684 px
+[STEP 2] Finding content bounds to center...
+[INFO] Content bounds: x=45-1179, y=29-1674
+[INFO] Content size: 1135 x 1646 px
+[INFO] Centering offset: dx=-17, dy=-10
+[INFO] Saved centered_page.png for verification
+[STEP 4] Creating two-page PDF...
+[INFO] Input: /Users/simonwang/Library/CloudStorage/OneDrive-HongKongBaptistUniversity/GTD/Areas/Teaching/Courses/GCAP 3056/genAI2026/courses/UCLC1008/AIagentDemo/MockPractice/one-side-answer-sheet.pdf
+[INFO] Output: /Users/simonwang/Library/CloudStorage/OneDrive-HongKongBaptistUniversity/GTD/Areas/Teaching/Courses/GCAP 3056/genAI2026/courses/UCLC1008/AIagentDemo/MockPractice/answerSheet/two-side-answer-sheet.pdf
+[STEP 1] Opening PDF and rendering to image...
+[INFO] Rendered size: 1191 x 1684 px
+[STEP 2] Finding content bounds to center...
+[INFO] Content bounds: x=45-1179, y=29-1674
+[INFO] Content size: 1135 x 1646 px
+[INFO] Centering offset: dx=-17, dy=-10
+[INFO] Saved centered_page.png for verification
+[STEP 4] Creating two-page PDF...
+[SUCCESS] Output saved: /Users/simonwang/Library/CloudStorage/OneDrive-HongKongBaptistUniversity/GTD/Areas/Teaching/Courses/GCAP 3056/genAI2026/courses/UCLC1008/AIagentDemo/MockPractice/answerSheet/two-side-answer-sheet.pdf
+[DONE] Process completed.
+[INFO] Input: /Users/simonwang/Library/CloudStorage/OneDrive-HongKongBaptistUniversity/GTD/Areas/Teaching/Courses/GCAP 3056/genAI2026/courses/UCLC1008/AIagentDemo/MockPractice/answerSheet/one-side-answer-sheet.pdf
+[INFO] Output: /Users/simonwang/Library/CloudStorage/OneDrive-HongKongBaptistUniversity/GTD/Areas/Teaching/Courses/GCAP 3056/genAI2026/courses/UCLC1008/AIagentDemo/MockPractice/answerSheet/two-side-answer-sheet.pdf
+[STEP 1] Opening PDF and rendering to image...
+[INFO] Rendered size: 1191 x 1684 px
+[STEP 2] Finding content bounds (excluding corner number)...
+[INFO] Content bounds (lines only): x=45-1179, y=29-1674
+[INFO] Content size: 1135 x 1646 px
+[INFO] Paste position for equal margins: (28, 19)
+[INFO] Removed corner page number
+[INFO] Saved centered_page.png for verification
+[STEP 4] Creating two-page PDF...
+[SUCCESS] Output saved: /Users/simonwang/Library/CloudStorage/OneDrive-HongKongBaptistUniversity/GTD/Areas/Teaching/Courses/GCAP 3056/genAI2026/courses/UCLC1008/AIagentDemo/MockPractice/answerSheet/two-side-answer-sheet.pdf
+[DONE] Process completed.
+[INFO] Input: /Users/simonwang/Library/CloudStorage/OneDrive-HongKongBaptistUniversity/GTD/Areas/Teaching/Courses/GCAP 3056/genAI2026/courses/UCLC1008/AIagentDemo/MockPractice/answerSheet/one-side-answer-sheet.pdf
+[INFO] Output: /Users/simonwang/Library/CloudStorage/OneDrive-HongKongBaptistUniversity/GTD/Areas/Teaching/Courses/GCAP 3056/genAI2026/courses/UCLC1008/AIagentDemo/MockPractice/answerSheet/two-side-answer-sheet.pdf
+[STEP 1] Opening PDF and rendering to image...
+[INFO] Rendered size: 1191 x 1684 px
+[STEP 2] Finding content bounds and left margin...
+[INFO] Left margin (use for both): 45 px
+[INFO] Content width for equal margins: 1101 px
+[INFO] Paste position: (45, 19)
+[INFO] Removed corner page number (whited out 220x220 px)
+[INFO] Saved centered_page.png for verification
+[STEP 4] Creating two-page PDF...
+[SUCCESS] Output saved: /Users/simonwang/Library/CloudStorage/OneDrive-HongKongBaptistUniversity/GTD/Areas/Teaching/Courses/GCAP 3056/genAI2026/courses/UCLC1008/AIagentDemo/MockPractice/answerSheet/two-side-answer-sheet.pdf
+[DONE] Process completed.

@@ -8,3 +8,5 @@ follow the structure provided in the user's prompt or input
 if such a structure is not available, choose a reasonable and explicit structure
 
 if you are not sure, you should raise some questions for clarifiction and explain how answering the questions can help
+
+
