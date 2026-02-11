@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Framing Our Report as a LegCo Complaint — GCAP 3056</title>
+  <style>
+    :root {
+      --primary: #1a3a5c;
+      --accent: #2980b9;
+      --bg: #f8f9fa;
+      --card-bg: #ffffff;
+      --text: #2c3e50;
+      --muted: #6c757d;
+      --border: #dee2e6;
+      --highlight: #fff3cd;
+      --success: #d4edda;
+      --danger: #f8d7da;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      padding: 2rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    h1 {
+      color: var(--primary);
+      font-size: 1.8rem;
+      border-bottom: 3px solid var(--accent);
+      padding-bottom: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+    h2 {
+      color: var(--primary);
+      font-size: 1.3rem;
+      margin: 1.8rem 0 0.8rem;
+      padding-left: 0.5rem;
+      border-left: 4px solid var(--accent);
+    }
+    .card {
+      background: var(--card-bg);
+      border-radius: 8px;
+      padding: 1.2rem 1.5rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+      border: 1px solid var(--border);
+    }
+    .highlight-box {
+      background: var(--highlight);
+      border-left: 4px solid #ffc107;
+      padding: 1rem 1.2rem;
+      border-radius: 0 6px 6px 0;
+      margin: 1rem 0;
+    }
+    .success-box {
+      background: var(--success);
+      border-left: 4px solid #28a745;
+      padding: 1rem 1.2rem;
+      border-radius: 0 6px 6px 0;
+      margin: 1rem 0;
+    }
+    .danger-box {
+      background: var(--danger);
+      border-left: 4px solid #dc3545;
+      padding: 1rem 1.2rem;
+      border-radius: 0 6px 6px 0;
+      margin: 1rem 0;
+    }
+    ul { padding-left: 1.5rem; margin: 0.5rem 0; }
+    li { margin-bottom: 0.4rem; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .flow-diagram {
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      flex-wrap: wrap;
+      margin: 1rem 0;
+      justify-content: center;
+    }
+    .flow-step {
+      background: var(--accent);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      text-align: center;
+    }
+    .flow-arrow { font-size: 1.2rem; color: var(--muted); }
+    .report-structure {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.3rem 1rem;
+      margin: 1rem 0;
+    }
+    .report-structure .num {
+      font-weight: bold;
+      color: var(--accent);
+      text-align: right;
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0.3rem 1rem;
+      margin: 0.5rem 0;
+    }
+    .contact-grid .label { font-weight: 600; color: var(--muted); }
+    .collapsible { cursor: pointer; user-select: none; }
+    .collapsible::after { content: ' ▾'; font-size: 0.8em; }
+    .collapsible.collapsed::after { content: ' ▸'; }
+    .collapsible-content { overflow: hidden; transition: max-height 0.3s ease; }
+    .collapsible-content.hidden { max-height: 0; padding: 0; }
+    @media (max-width: 600px) {
+      body { padding: 1rem; }
+      .flow-diagram { flex-direction: column; }
+      .flow-arrow { transform: rotate(90deg); }
+    }
+  </style>
+</head>
+<body>
+
+<h1>Framing Our Report as a LegCo Complaint</h1>
+<p style="color: var(--muted); margin-bottom: 1.5rem;">GCAP 3056 — Spring 2026 · Week 5</p>
+
+<h2>The Big Picture</h2>
+<div class="highlight-box">
+  <strong>Begin with the end in mind:</strong> Our final report will be framed as a complaint to the LegCo Public Complaints Office. We are arguing that the government could have done a better job — supported by our research evidence.
+</div>
+
+<h2>What is the LegCo Redress System?</h2>
+<div class="card">
+  <ul>
+    <li>The Legislative Council operates a <strong>Redress System</strong> to receive complaints from the public who are <strong>aggrieved by government actions or policies</strong></li>
+    <li>It also handles representations on government policies, legislation, and other matters of public concern</li>
+    <li>Duty Members (groups of nine, rotating weekly) oversee the system and meet with complainants</li>
+    <li>All case information is kept <strong>strictly confidential</strong></li>
+  </ul>
+</div>
+
+<h2>How a Complaint is Handled</h2>
+<div class="flow-diagram">
+  <div class="flow-step">Submit complaint<br>(form / letter)</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">Public Complaints<br>Office reviews</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">Background info<br>obtained from govt</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">Interview arranged<br>(≤12 working days)</div>
+  <div class="flow-arrow">→</div>
+  <div class="flow-step">Follow-up<br>& resolution</div>
+</div>
+
+<h2>Our Report Structure</h2>
+<div class="card">
+  <p style="margin-bottom: 0.8rem;">The report should follow this general structure (replace functional headings with thematic headings for your topic):</p>
+  <div class="report-structure">
+    <div class="num">1.</div><div><strong>Title</strong> — thematic, reflecting the core complaint</div>
+    <div class="num">2.</div><div><strong>Executive Summary</strong> — the problem, the gap, what should change</div>
+    <div class="num">3.</div><div><strong>Background: The Problem</strong> — publicly available evidence on the issue</div>
+    <div class="num">4.</div><div><strong>Existing Solution</strong> — what the government is currently doing</div>
+    <div class="num">5.</div><div><strong>Room for Improvement</strong> — hypotheses supported by evidence</div>
+    <div class="num">6.</div><div><strong>Government's Replies to Our Enquiries</strong> — analysis of responses (or non-responses) under Code on Access to Information</div>
+    <div class="num">7.</div><div><strong>Complaints and Follow-up</strong> — what lawmakers should push for</div>
+    <div class="num">8.</div><div><strong>Suggestions for Media Investigation and Coverage</strong> — how to create pressure for accountability</div>
+  </div>
+</div>
+
+<h2>What We Can Complain About</h2>
+<div class="success-box">
+  <ul>
+    <li>Government actions or decisions that affect stakeholders negatively</li>
+    <li>Programmes not meeting their stated objectives</li>
+    <li>Government staff who have not responded adequately to public concerns</li>
+    <li>Gaps between policy goals and actual implementation</li>
+  </ul>
+</div>
+
+<h2>What is Outside Scope</h2>
+<div class="danger-box">
+  <ul>
+    <li>Requests for legal advice or legal services</li>
+    <li>Private disputes or court decisions</li>
+    <li>Matters handled by independent bodies (e.g. ICAC, IPCC)</li>
+    <li>Labour disputes (unless of wide public concern)</li>
+    <li>Matters outside HKSAR jurisdiction</li>
+  </ul>
+</div>
+
+<h2>Key Decisions for Each Team</h2>
+<div class="card">
+  <ul>
+    <li><strong>What specific decisions and programmes to focus on?</strong> — narrow from a broad topic to specific government actions</li>
+    <li><strong>In what ways can the government do a better job?</strong> — your hypotheses, supported by public info and research</li>
+    <li><strong>What questions to send to government?</strong> — under the Code on Access to Information (aim for replies before the end of the semester)</li>
+    <li><strong>How to frame the complaint?</strong> — thematic headings that tell a story, not just generic labels</li>
+  </ul>
+</div>
+
+<h2>Contact: Public Complaints Office</h2>
+<div class="card">
+  <div class="contact-grid">
+    <div class="label">Form</div><div><a href="https://www.legco.gov.hk/general/english/sec/corg_ser/cp_form.pdf">Complaint form (PDF)</a></div>
+    <div class="label">Phone</div><div><a href="tel:+85239193919">3919 3919</a> (Mon–Fri, 8:45am–6:00pm)</div>
+    <div class="label">Email</div><div><a href="mailto:complaints@legco.gov.hk">complaints@legco.gov.hk</a></div>
+    <div class="label">Address</div><div>Legislative Council Complex, 1 Legislative Council Road, Central, Hong Kong</div>
+  </div>
+</div>
+
+<h2>Source</h2>
+<div class="card">
+  <a href="https://www.legco.gov.hk/en/legco-business/redress-system/handling-cases-received-under-redress-system.html">LegCo: Handling of cases received under the Redress System</a>
+</div>
+
+</body>
+</html>

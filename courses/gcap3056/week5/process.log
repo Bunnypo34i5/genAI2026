@@ -1,0 +1,57 @@
+# Week 5 Process Log
+
+## 2026-02-12
+
+### Task: Create LegCo complaint framing and report outlines for all groups
+
+**Context:** Following instructions in `outlineReport.md` — begin with the end in mind; frame the final report as a LegCo complaint.
+
+**Steps completed:**
+
+1. **Fetched LegCo Redress System page**
+   - URL: https://www.legco.gov.hk/en/legco-business/redress-system/handling-cases-received-under-redress-system.html
+   - Extracted: complaint process, scope, contact details, workflow
+
+2. **Created `LegcoComplaint.md`**
+   - Summarises the Redress System: what it is, how complaints are handled, what is in/out of scope
+   - Frames how our course projects connect to the complaint process
+   - Follows AIresponseGuideline.md: concise, bullet points, structure from user prompt
+
+3. **Created `legcoComplaint.html`**
+   - Visually appealing version with flow diagram, colour-coded sections, collapsible elements
+   - Same content as the .md file but designed for presentation/sharing
+
+4. **Fetched Google Doc** (task 4.1/4.2 context)
+   - URL: https://docs.google.com/document/d/1GCsy8H3-49Z8JgxrxmhFEQDDqKoNTiLQyNfczot1Kd0
+   - Extracted: week 5 plan, report structure, group assignments, task 4.1/4.2 instructions, student input expectations
+
+5. **Created `reportPlan.md`**
+   - General report structure (8 sections from Title to Media Suggestions)
+   - Workflow: outline → review → student input → revise → send questions → integrate replies
+   - Key decisions each team must make
+   - Links to assessment and reference files
+
+6. **Created `outlineDraft.md` for each of 6 groups:**
+   - `group1-legco-data-access/outlineDraft.md` — LegCo data fragmentation and citizen access
+   - `group2-fire-service-1/outlineDraft.md` — Learning from past fire incidents (London/HK comparison)
+   - `group3-eHealth/outlineDraft.md` — eHealth for insurance reimbursement automation
+   - `group4-fire-service-2/outlineDraft.md` — Fire safety education and prevention
+   - `group5-prevent-sexual-harassment/outlineDraft.md` — Government anti-harassment programmes
+   - `group6-rare-disease/outlineDraft.md` — Rare disease drug access and Mainland procurement
+
+   Each outline includes:
+   - Placeholder title (thematic, not generic)
+   - 8 sections matching the report structure
+   - Hypotheses based on existing WebSearchReport.md and public-info.md
+   - Suggested questions for government (Code on Access to Information)
+   - Comments section for teacher and student feedback
+   - References to existing project files
+
+**AI tools used:** Web fetch (LegCo page, Google Doc), file reading, file creation
+**Human input needed:** Teacher and student review of outlineDrafts; teams to finalise hypotheses and government questions
+
+### Next steps
+- Review each team's WebSearchReport.md and perform another round of web search
+- Get input from team members on the outlineDraft.md
+- Revise outlines based on input
+- Finalise questions for government staff (Code on Access to Information)

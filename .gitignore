@@ -14,5 +14,8 @@ AmbassadorProgramme/LLM/poeKey.md
 # Ollama macOS app binaries (large; keep locally, don't track in git)
 Ollama/
 Ollama-darwin.zip
+
+# Large video files (keep locally, don't track in git)
+*.mp4
 courses/gcap3226/week5/chatbots/ollama-macos-offline.zip
 courses/gcap3226/week5/chatbots/ollama-macos-offline/
