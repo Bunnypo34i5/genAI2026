@@ -27,7 +27,7 @@
     }
 
     .container {
-      max-width: 720px;
+      max-width: 960px;
       margin: 2rem auto;
       padding: 0 1rem;
     }
@@ -262,10 +262,59 @@
 
     .workflow-box ul { margin-left: 1.25rem; }
 
-    @media (max-width: 480px) {
-      .hero h1 { font-size: 1.25rem; }
+    /* Poster embed */
+    .poster-embed {
+      position: relative;
+      overflow: hidden;
+      border-radius: 12px;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+    .poster-embed iframe {
+      border: none;
+      display: block;
+      transform-origin: top left;
+    }
+    .poster-embed a {
+      display: block;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.35rem;
+      text-decoration: none;
+    }
+    .poster-embed a:hover { color: var(--primary); }
+
+    /* Wider desktop */
+    @media (min-width: 1200px) {
+      .container { max-width: 1040px; }
+      .content { padding: 2.5rem 3rem; }
+      .hero { padding: 3rem 2.5rem; }
+      .hero h1 { font-size: 1.75rem; }
+      p { font-size: 1rem; }
+    }
+
+    /* Tablet */
+    @media (max-width: 768px) {
+      .container { margin: 1rem auto; }
+      .content { padding: 1.5rem; }
+      .hero { padding: 2rem 1.5rem; }
       .comparison { grid-template-columns: 1fr; }
-      .content { padding: 1.25rem; }
+    }
+
+    /* Mobile */
+    @media (max-width: 480px) {
+      .container { margin: 0; padding: 0; }
+      .card { border-radius: 0; }
+      .hero h1 { font-size: 1.2rem; }
+      .hero .subtitle { font-size: 0.9rem; }
+      .content { padding: 1rem; }
+      .comparison { grid-template-columns: 1fr; }
+      h2 { font-size: 1.1rem; }
+      h3 { font-size: 0.95rem; }
+      p, li { font-size: 0.9rem; }
+      .cta-button { padding: 0.75rem 1.5rem; font-size: 0.9rem; }
+      .screenshot { border-radius: 4px; }
     }
   </style>
 </head>
@@ -291,11 +340,11 @@
           </div>
         </div>
 
-        <!-- Workshop Poster -->
-        <a href="poster_A4.html" target="_blank" style="display:block; margin-bottom:1rem;">
-          <iframe src="poster_A4.html" style="width:100%; height:520px; border:1px solid var(--border); border-radius:8px; pointer-events:none;" title="Workshop Poster"></iframe>
-          <p style="text-align:center; font-size:0.8rem; color:var(--text-muted); margin-top:0.25rem;">Click to view full poster</p>
-        </a>
+        <!-- Workshop Poster (full, scaled to fit) -->
+        <div class="poster-embed" id="posterEmbed">
+          <iframe src="poster_A4.html" id="posterFrame" title="Workshop Poster"></iframe>
+          <a href="poster_A4.html" target="_blank">Click to view full poster &rarr;</a>
+        </div>
 
         <p>This article covers the installation and basic operations of AI agent tools. The <strong>February 20 workshop</strong> will include live demonstrations and Q&amp;A. I strongly recommend that participants complete the setup steps below before the session. If you can't attend the live workshop, don't worry &mdash; through this post (including the comments section), you'll be able to access the video recording and all learning materials.</p>
 
@@ -611,5 +660,23 @@ update a process.log to document what is being done</div>
       </div>
     </div>
   </div>
+
+  <script>
+    function scalePoster() {
+      var container = document.getElementById('posterEmbed');
+      var iframe = document.getElementById('posterFrame');
+      if (!container || !iframe) return;
+      var containerWidth = container.offsetWidth;
+      var posterNativeWidth = 793.7;
+      var posterNativeHeight = 1122.5;
+      var scale = containerWidth / posterNativeWidth;
+      iframe.style.width = posterNativeWidth + 'px';
+      iframe.style.height = posterNativeHeight + 'px';
+      iframe.style.transform = 'scale(' + scale + ')';
+      container.style.height = (posterNativeHeight * scale) + 'px';
+    }
+    window.addEventListener('load', scalePoster);
+    window.addEventListener('resize', scalePoster);
+  </script>
 </body>
 </html>
