@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Getting Started with AI Agents: Install Your IDE — Feb 20 Workshop | Dr Simon Wang</title>
+  <meta name="description" content="A hands-on guide to installing and using AI agents in IDEs like VS Code and Trae for document processing — not for coding.">
+  <style>
+    :root {
+      --primary: #0a66c2;
+      --primary-dark: #004182;
+      --accent: #057642;
+      --bg: #f3f2ef;
+      --card-bg: #ffffff;
+      --text: #191919;
+      --text-muted: #666666;
+      --border: #e0e0e0;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    .container {
+      max-width: 720px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08), 0 1px 2px rgba(0,0,0,0.06);
+      overflow: hidden;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: white;
+      padding: 2.5rem 2rem;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      line-height: 1.35;
+    }
+
+    .hero .subtitle { font-size: 1rem; opacity: 0.9; }
+
+    .hero .date-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 20px;
+      padding: 0.4rem 1.2rem;
+      margin-top: 1rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    .content { padding: 2rem; }
+
+    .author {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .author-avatar {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: white;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .author-info .name { font-weight: 600; font-size: 0.95rem; }
+    .author-info .meta { font-size: 0.8rem; color: var(--text-muted); }
+
+    h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin: 2rem 0 0.75rem;
+      color: var(--text);
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 0.3rem;
+    }
+
+    h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin: 1.5rem 0 0.5rem;
+      color: var(--primary-dark);
+    }
+
+    p { margin-bottom: 1rem; font-size: 0.95rem; color: #333; }
+
+    .highlight-box {
+      background: #fff8e1;
+      border-left: 4px solid #f9a825;
+      padding: 1rem 1.25rem;
+      border-radius: 0 8px 8px 0;
+      margin: 1.25rem 0;
+      font-style: italic;
+    }
+
+    .highlight-box p { margin: 0; font-size: 0.95rem; }
+
+    .info-box {
+      background: #f0f7ff;
+      border-left: 4px solid var(--primary);
+      padding: 1rem 1.25rem;
+      border-radius: 0 8px 8px 0;
+      margin: 1.25rem 0;
+    }
+
+    .info-box p { margin: 0; font-size: 0.95rem; }
+    .info-box strong { color: var(--primary-dark); }
+
+    .screenshot {
+      display: block;
+      max-width: 100%;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      margin: 1rem 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .screenshot-caption {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-align: center;
+      margin: -0.5rem 0 1.25rem;
+      font-style: italic;
+    }
+
+    ul, ol {
+      margin: 0.75rem 0 1rem 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    li { margin-bottom: 0.4rem; color: #333; }
+
+    .code-block {
+      background: #1e1e1e;
+      color: #d4d4d4;
+      padding: 1rem 1.25rem;
+      border-radius: 8px;
+      font-family: 'SF Mono', 'Fira Code', 'Consolas', monospace;
+      font-size: 0.85rem;
+      line-height: 1.6;
+      margin: 1rem 0;
+      overflow-x: auto;
+      white-space: pre-wrap;
+    }
+
+    .cta-section {
+      text-align: center;
+      padding: 1.5rem;
+      margin: 1.5rem 0;
+      background: linear-gradient(135deg, #f0f7ff 0%, #ecfdf5 100%);
+      border-radius: 12px;
+    }
+
+    .cta-section p { font-size: 0.95rem; margin-bottom: 1rem; color: #333; }
+
+    .cta-button {
+      display: inline-block;
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      padding: 0.85rem 2rem;
+      border-radius: 24px;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: background 0.2s;
+    }
+
+    .cta-button:hover { background: var(--primary-dark); }
+
+    .sponsor-note {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 1rem;
+      font-style: italic;
+    }
+
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+
+    .comparison-item {
+      padding: 1rem;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .comparison-item.chatbot {
+      background: #fef3f2;
+      border: 1px solid #fecaca;
+    }
+
+    .comparison-item.agent {
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+    }
+
+    .comparison-item .icon { font-size: 2rem; margin-bottom: 0.5rem; }
+    .comparison-item .label { font-weight: 700; font-size: 0.9rem; margin-bottom: 0.25rem; }
+    .comparison-item .desc { font-size: 0.82rem; color: var(--text-muted); }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 2rem 0;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .tag {
+      background: #e8f4fd;
+      color: var(--primary);
+      padding: 0.25rem 0.6rem;
+      border-radius: 12px;
+      font-size: 0.8rem;
+      font-weight: 500;
+    }
+
+    .workflow-box {
+      background: #f9fafb;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem;
+      margin: 1rem 0;
+    }
+
+    .workflow-box ul { margin-left: 1.25rem; }
+
+    @media (max-width: 480px) {
+      .hero h1 { font-size: 1.25rem; }
+      .comparison { grid-template-columns: 1fr; }
+      .content { padding: 1.25rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+
+      <!-- Hero -->
+      <div class="hero">
+        <h1>Getting Started with AI Agents:<br>Install Your IDE</h1>
+        <p class="subtitle">Warm-Up for the February 20 Workshop</p>
+        <div class="date-badge">Feb 20, 2026 &mdash; Live Online</div>
+      </div>
+
+      <div class="content">
+
+        <!-- Author -->
+        <div class="author">
+          <div class="author-avatar">SW</div>
+          <div class="author-info">
+            <div class="name">Dr Simon Wang</div>
+            <div class="meta">February 15, 2026 &middot; Hong Kong</div>
+          </div>
+        </div>
+
+        <!-- Banner Image -->
+        <img class="screenshot" src="https://mmbiz.qpic.cn/sz_mmbiz_jpg/O6nOHWgQxUjPQs64lw0wGvsdmNcpYcXe53aX3KIO7rc878c6XicxhbZyKjMclL8lWzyrj7VchoaM2D0BEn7zuJhMLcBTgicV7JDgEVOKH4uMI/640?wx_fmt=jpeg&from=appmsg&tp=wxpic&wxfrom=5&wx_lazy=1" alt="AI Agents Workshop Banner">
+
+        <p>This article covers the installation and basic operations of AI agent tools. The <strong>February 20 workshop</strong> will include live demonstrations and Q&amp;A. I strongly recommend that participants complete the setup steps below before the session. If you can't attend the live workshop, don't worry &mdash; through this post (including the comments section), you'll be able to access the video recording and all learning materials.</p>
+
+        <!-- CTA 1 -->
+        <div class="cta-section">
+          <p><strong>Register for the Workshop</strong></p>
+          <a href="https://forms.office.com/PLACEHOLDER_LINK" class="cta-button" target="_blank">Register Now</a>
+          <p class="sponsor-note">Sponsored by the Trae team. Participants receive complimentary Trae tokens (valid for 3 days).</p>
+        </div>
+
+        <!-- Section: What Are AI Agents and IDEs -->
+        <h2>What Are AI Agents and IDEs?</h2>
+
+        <p>Let me start with a brief introduction to <strong>AI agents</strong> and <strong>IDEs</strong> (Integrated Development Environments).</p>
+
+        <p>Both AI agents and regular chatbots are powered by large language models (LLMs) &mdash; they can intelligently respond to natural language instructions. But the <strong>fundamental difference</strong> is:</p>
+
+        <div class="comparison">
+          <div class="comparison-item chatbot">
+            <div class="icon">&#x1F4AC;</div>
+            <div class="label">Chatbot</div>
+            <div class="desc">Can only respond with text (including multimodal content like images &amp; videos)</div>
+          </div>
+          <div class="comparison-item agent">
+            <div class="icon">&#x1F916;</div>
+            <div class="label">AI Agent</div>
+            <div class="desc">Can invoke various tools to act on files &amp; folders on your computer</div>
+          </div>
+        </div>
+
+        <div class="highlight-box">
+          <p><strong>This distinction is crucial and not immediately intuitive.</strong> Please think about it carefully. Once you truly understand it, you'll realise that our work patterns are on the brink of a revolution.</p>
+        </div>
+
+        <p>Now let's talk about IDEs. There are many such tools on the market:</p>
+        <ul>
+          <li><strong>VS Code</strong> &mdash; an open-source platform by Microsoft</li>
+          <li><strong>Cursor</strong> &mdash; built on VS Code's core</li>
+          <li><strong>Trae</strong> &mdash; developed by a team in mainland China, also based on VS Code</li>
+          <li><strong>Qoder</strong> &mdash; another VS Code-based tool</li>
+        </ul>
+
+        <p>An IDE, as the name suggests, is an integrated development environment &mdash; traditionally used by programmers to write code and debug programs. As a result, it's largely unknown outside of programming circles.</p>
+
+        <p>However, <strong>our training is NOT about programming</strong>, nor is it about the trending "vibe coding" (using AI to write software). What I want to introduce is the technique of <strong>using AI agents and IDEs to handle various document tasks</strong>, including:</p>
+        <ul>
+          <li>Writing academic papers</li>
+          <li>Preparing reports and presentations</li>
+          <li>Teachers grading assignments</li>
+          <li>Preparing course materials</li>
+        </ul>
+
+        <hr class="divider">
+
+        <!-- Section: Innovation Tangent -->
+        <h2>A Tangent on Innovation</h2>
+
+        <p>What is the essence of innovation? Here's a tricky arithmetic puzzle: <strong>make 24 from the numbers 5, 5, 5, 1</strong>.</p>
+
+        <p>Why is it hard? Because the solution requires decimals:</p>
+        <ul>
+          <li>1 &divide; 5 = 0.2</li>
+          <li>5 &minus; 0.2 = 4.8</li>
+          <li>4.8 &times; 5 = <strong>24</strong></li>
+        </ul>
+
+        <p>From this puzzle, we can see that one path to innovation is <strong>breaking out of fixed mental frameworks</strong> &mdash; like the assumption that 24-point games only involve whole number operations. Similarly, our AI agent training breaks the assumption that IDEs are only for programming &mdash; and that's where the spark of innovation lies.</p>
+
+        <hr class="divider">
+
+        <!-- Section: Hands-on -->
+        <h2>Let's Get Hands-On</h2>
+
+        <h3>Step 1: Install an IDE &mdash; VS Code or Trae</h3>
+
+        <p>This event is sponsored by the <strong>Trae team</strong>. Workshop participants will receive <strong>complimentary Trae tokens</strong> (valid for 3 days).</p>
+
+        <p>Search "VS Code download" or "Trae install" in your browser, and follow the installation steps.</p>
+
+        <img class="screenshot" src="https://mmbiz.qpic.cn/sz_mmbiz_png/O6nOHWgQxUhMWz0Mia1ict3hNrcvibcFjibul5ARUDuYh1g7W2MBiblib9RExeUqibnSoWuppzo3E9rFB7daU0fASPE2g4qdhSI1EvicVBeSrfqsxlU/640?wx_fmt=png&from=appmsg&tp=wxpic&wxfrom=5&wx_lazy=1" alt="IDE layout overview">
+        <p class="screenshot-caption">The IDE layout: file explorer (left), file editor (centre top), terminal (centre bottom), AI agent chat (right)</p>
+
+        <p>As shown above, the IDE has several key areas:</p>
+        <ul>
+          <li><strong>Left panel</strong> &mdash; File explorer: view local folders, create subfolders and files (manually or through the AI agent)</li>
+          <li><strong>Centre top</strong> &mdash; File reader/editor</li>
+          <li><strong>Centre bottom</strong> &mdash; Command line / terminal</li>
+          <li><strong>Right panel</strong> &mdash; AI agent chat area</li>
+        </ul>
+
+        <img class="screenshot" src="https://mmbiz.qpic.cn/sz_mmbiz_png/O6nOHWgQxUiaWvvpvAQpu13g9gdF2tfjSqoMphH3YtgFjXv6suXl6q853DOq5EQWgTiaalZfae8j1F1IDUjM6QYVGLjJQFXwLbDw1Us2rSTCE/640?wx_fmt=png&from=appmsg&tp=wxpic&wxfrom=5&wx_lazy=1" alt="VS Code initial page">
+        <p class="screenshot-caption">VS Code initial page</p>
+
+        <img class="screenshot" src="https://mmbiz.qpic.cn/sz_mmbiz_png/O6nOHWgQxUjJfzNRk1icJIMicHjOsdjcL9cFGv68JlRTicOnzAIte3BMFaNyADM7W3ppYgOuSpiaOibx5n9F43LHww20GAjDSjeJ1whAnXu4PGQg/640?wx_fmt=png&from=appmsg&tp=wxpic&wxfrom=5&wx_lazy=1" alt="Trae initial page">
+        <p class="screenshot-caption">Trae initial page</p>
+
+        <img class="screenshot" src="https://mmbiz.qpic.cn/mmbiz_png/O6nOHWgQxUgL8s5Ol9ibh3gUETYFyAuNod9YBlsuoq2CibxVXSpRbmkVVNAs6z7JQYbYzACr0oFAbuNks3vMO8Pdgq4LibqM6CniaktZRe5oXiaY/640?wx_fmt=png&from=appmsg&tp=wxpic&wxfrom=5&wx_lazy=1" alt="Top-right icons">
+        <p class="screenshot-caption">Note the icons in the top-right corner: left icon opens the file browser &amp; tool panels, right icon toggles the AI agent chat panel</p>
+
+        <img class="screenshot" src="https://mmbiz.qpic.cn/sz_mmbiz_png/O6nOHWgQxUh4jYky0Tv5XFM5fvhHAgVx0cq1yWagDqrrRZ6hzgrykswFSHAKs2zqNOC6CZYxgMW8walicJJNsZO8IxTowlsPCcYDnRRdnxEI/640?wx_fmt=png&from=appmsg&tp=wxpic&wxfrom=5&wx_lazy=1" alt="VS Code with both panels open">
+        <p class="screenshot-caption">VS Code with both panels open</p>
+
+        <!-- Step 2: Agent mode -->
+        <h3>Step 2: Set Up AI Agent Chat</h3>
+
+        <p>In <strong>VS Code</strong>, select <strong>"Agent"</strong> mode:</p>
+
+        <img class="screenshot" src="https://mmbiz.qpic.cn/mmbiz_png/O6nOHWgQxUhxkCUXet6PRFfsb6jQJkUCejdOUgpV5FnibxI6WH8w70oSWqCJgUkmx5sH6icZhk43LX3nWtKjsVwZAUarAAVXLrWzNa7Qgh7y0/640?wx_fmt=png&from=appmsg&tp=wxpic&wxfrom=5&wx_lazy=1" alt="VS Code Agent mode selection">
+        <p class="screenshot-caption">Select "Agent" mode in VS Code</p>
+
+        <p>In <strong>Trae</strong>, select <strong>"Builder"</strong> mode:</p>
+
+        <img class="screenshot" src="https://mmbiz.qpic.cn/mmbiz_png/O6nOHWgQxUgICfteCVBALRQTv9wiaPiaKEsur3c2d8CjEzkyYNWFNutfb1kAHIlcDuSicy9Tgxs9Z76gpGmWPiah0CpevGm9aSWfXesxZyX2gr8/640?wx_fmt=png&from=appmsg&tp=wxpic&wxfrom=5&wx_lazy=1" alt="Trae Builder mode selection">
+        <p class="screenshot-caption">Select "Builder" mode in Trae</p>
+
+        <p>Now try chatting with the AI agent in VS Code or Trae &mdash; <strong>say Hi!</strong></p>
+
+        <p>For <strong>VS Code</strong>, you need to register a <strong>GitHub</strong> account. I recommend using your university email and applying for education benefits:</p>
+        <ul>
+          <li><a href="https://docs.github.com/en/education/about-github-education/github-education-for-students/apply-to-github-education-as-a-student" target="_blank">GitHub Education for Students &rarr;</a></li>
+          <li><a href="https://docs.github.com/en/education/about-github-education/github-education-for-teachers/apply-to-github-education-as-a-teacher" target="_blank">GitHub Education for Teachers &rarr;</a></li>
+        </ul>
+
+        <p>For <strong>Trae</strong>, you need to register a Trae account.</p>
+
+        <!-- Step 3: Open a folder -->
+        <h3>Step 3: Open a Folder</h3>
+
+        <p>When you try chatting with Trae without a folder selected, the agent will ask you to open one:</p>
+
+        <img class="screenshot" src="https://mmbiz.qpic.cn/mmbiz_png/O6nOHWgQxUh78FmJvVI7G3XB1BIT5GZPr0p6UeFjc3zHKUwM4plYTK9WJwicZiblaTK08Lvt7ic4duUxB6gZ4iblictFRBWQIIAJd5nKawnpFwko/640?wx_fmt=png&from=appmsg&tp=wxpic&wxfrom=5&wx_lazy=1" alt="Trae asks to open folder">
+
+        <img class="screenshot" src="https://mmbiz.qpic.cn/mmbiz_png/O6nOHWgQxUgYjI8u187UzNTk939sAO8YpBYx3YpDq6wSjJAMHibViahZS0HicvnGicIq6Plxb9uAvibjIlicPcLOFhC7DHG1p7fy3eNFYRb6KMOe8/640?wx_fmt=png&from=appmsg&tp=wxpic&wxfrom=5&wx_lazy=1" alt="Trae folder prompt">
+
+        <p>At this point, you can create a new folder:</p>
+
+        <img class="screenshot" src="https://mmbiz.qpic.cn/sz_mmbiz_png/O6nOHWgQxUjJv0nrmgSpEzm1ftcictxpibbe6dbTxDtV9kyJtgTY2nIsBvyUUJLZWpJfOgc9Ilg7VoYEicbdd7csY5SfPt8dNjAu3KoIx0TPmg/640?wx_fmt=png&from=appmsg&tp=wxpic&wxfrom=5&wx_lazy=1" alt="Create new folder">
+        <p class="screenshot-caption">Create a new folder for the demo</p>
+
+        <p>Both Trae and VS Code will ask you to authorize reading local files and will ask about file security. <strong>Be bold</strong> &mdash; nothing ventured, nothing gained! &#x1F604;</p>
+
+        <img class="screenshot" src="https://mmbiz.qpic.cn/sz_mmbiz_png/O6nOHWgQxUgib4zksbac6ELNTmf8PrHIhD8VBLRRZklmBobsB5T05UgOkZL2QkYr50YdKws2yUstAQaSAUzJ5OCFpQwZ9YhMoOLBskEu9rVc/640?wx_fmt=png&from=appmsg&tp=wxpic&wxfrom=5&wx_lazy=1" alt="Authorization prompt">
+        <p class="screenshot-caption">Authorize the IDE to read local files</p>
+
+        <p>Similarly, open this newly created folder in VS Code.</p>
+
+        <hr class="divider">
+
+        <!-- Section: First Task -->
+        <h2>Our First Task: Converting PDF/PPTX to Markdown</h2>
+
+        <p>This is our first hands-on operation: <strong>converting PDF, Word, and PPTX files</strong> &mdash; common but "messy" formats &mdash; into <strong>Markdown</strong>, a machine-readable format.</p>
+
+        <p>Let me briefly explain the concept of <strong>machine-readable</strong>. PDF, Word, and PPTX are proprietary file formats developed by private companies. To read and edit them, you need tools developed by those companies (Adobe, Microsoft Office, etc.). If you send these files directly to an LLM, it will try to process them but often struggles. Therefore, <strong>we first need to clean these files into Markdown format</strong>. (For now, we'll skip handling images, charts, and complex formatting to keep things simple.)</p>
+
+        <img class="screenshot" src="https://mmbiz.qpic.cn/mmbiz_png/O6nOHWgQxUhGnIp1G364Q6Pxd3p07vAic7LiaIhJX0gVknt9XpwLAn05g01phA09zLMbevyX3XOe7LDUWts1lanEcQvFoqwwEXTWNtBBickeV4/640?wx_fmt=png&from=appmsg&tp=wxpic&wxfrom=5&wx_lazy=1" alt="File conversion overview">
+
+        <p>First, create a new folder called <code>rawFiles</code>, then drop a couple of files in it &mdash; a PDF and a PPTX:</p>
+
+        <img class="screenshot" src="https://mmbiz.qpic.cn/mmbiz_png/O6nOHWgQxUiasWzTvfbmcdEEs9Bia0wuufbOKBuxlBp6e625Iq1ES9N9jSI4NxPqIB5qeQuasMicm1eYlwOx5Ax3p2myBPyP6QKmZjDgQq3npw/640?wx_fmt=png&from=appmsg&tp=wxpic&wxfrom=5&wx_lazy=1" alt="rawFiles folder with PDF and PPTX">
+
+        <img class="screenshot" src="https://mmbiz.qpic.cn/sz_mmbiz_png/O6nOHWgQxUiaUFQ6ib2e5QeSIqm1V4ibB8OTPFtIcaXQaUtZTvpNlVYBuwYGGvLGayVmgMCxoiaR0UlRFDn8ibcrXeCsdcOo6yicIjFjSy8qCPrRw/640?wx_fmt=png&from=appmsg&tp=wxpic&wxfrom=5&wx_lazy=1" alt="Files inside rawFiles">
+        <p class="screenshot-caption">rawFiles folder containing a PDF and a PPTX</p>
+
+        <!-- Demo 1: VS Code -->
+        <h3>Demo 1: Using VS Code to Convert PDF to Markdown</h3>
+
+        <p>Next, create a new file called <code>processFilesVS.md</code> and edit it.</p>
+
+        <p>In this file, I first <strong>copy and paste the path</strong> to the <code>rawFiles</code> folder.</p>
+
+        <div class="info-box">
+          <p><strong>This operation is extremely important &mdash; it's arguably the core technique when using AI agents.</strong> Providing exact file paths tells the agent precisely where to find and place files.</p>
+        </div>
+
+        <img class="screenshot" src="https://mmbiz.qpic.cn/sz_mmbiz_png/O6nOHWgQxUhLFEl221ff5DD4fmDOyibZFaJ0pOydMtL1uicib4z7e1vCSWOiat0cK79UtCiboJklr1OsjLV3Vjick5y7QCtjGwjxia7av2ggmOlrr4/640?wx_fmt=png&from=appmsg&tp=wxpic&wxfrom=5&wx_lazy=1" alt="Copying the folder path">
+        <p class="screenshot-caption">Copy-pasting the rawFiles folder path &mdash; the core technique</p>
+
+        <img class="screenshot" src="https://mmbiz.qpic.cn/mmbiz_png/O6nOHWgQxUgsjicSExBQt2D7VrmbA5kRGjtmcXDNxnIaPp0llXeGGQE9YsF8ibqUzjKgjN4mGaEias0N23VDiciblI4U1C38uFkQ4VXGlwQ2wLk8/640?wx_fmt=png&from=appmsg&tp=wxpic&wxfrom=5&wx_lazy=1" alt="VS Code icon to edit file">
+        <p class="screenshot-caption">Click the VS Code icon to edit the file</p>
+
+        <img class="screenshot" src="https://mmbiz.qpic.cn/sz_mmbiz_png/O6nOHWgQxUiaYNL4gX4f55ldvXOeuJMQEn2jKYdoRFp2ScYdgVicboC3H6Zrb1GasYB4qTEHuWo97p9H7QKyHibjWFVCuIeqtb7dsedSYibXMCE/640?wx_fmt=png&from=appmsg&tp=wxpic&wxfrom=5&wx_lazy=1" alt="processFilesVS.md content">
+        <p class="screenshot-caption">The content of processFilesVS.md</p>
+
+        <p>Here is the content of <code>processFilesVS.md</code>:</p>
+
+        <div class="code-block">/Users/simonwang/Documents/AIdemo/rawFiles
+
+read the files in the folder above
+
+write python scripts to process the PDF and create a md file;
+ensure it is readable to human, with all the texts well organised;
+we can skip and ignore the images;
+name the md file with the same name as PDF
+
+create and update a process.log to document what is being done</div>
+
+        <p>Next, we <strong>copy the file path</strong> of <code>processFilesVS.md</code> and <strong>send it to the AI agent</strong>:</p>
+
+        <img class="screenshot" src="https://mmbiz.qpic.cn/mmbiz_png/O6nOHWgQxUjklMWLuwuQ14JNKhvjBjV3E7ETy1nezqZnnVoH7FFibB2qMppO5M5FbnaIjugw4u2lZNkx0jpZqs4IBaGg2xTa7ic4lczbvskvc/640?wx_fmt=png&from=appmsg&tp=wxpic&wxfrom=5&wx_lazy=1" alt="Sending path to VS Code agent">
+
+        <img class="screenshot" src="https://mmbiz.qpic.cn/mmbiz_png/O6nOHWgQxUgicICjJh6HIBPqcXbdau122M0ibjh3ErbJtq5pLc3ZtLxWplgEBmQibZM80X2r38sdPhNPXIodpk5MGgn5ysEnKMZfTiaicI65bhxg/640?wx_fmt=png&from=appmsg&tp=wxpic&wxfrom=5&wx_lazy=1" alt="Agent starts processing">
+        <p class="screenshot-caption">Sending the file path to the agent &mdash; and the magic begins!</p>
+
+        <p><strong>The moment of magic!</strong> Watch the agent work through the task:</p>
+
+        <img class="screenshot" src="https://mmbiz.qpic.cn/mmbiz_png/O6nOHWgQxUgjd2UuJcqHFbcNEHRIuTKZGwVZicyHFeDqM2bAhvsNU52R61m1fQ5Z2MOkMhvHmJuyItGyO88KyyViblbLnD2AyDsOFAJuaA2yI/640?wx_fmt=png&from=appmsg&tp=wxpic&wxfrom=5&wx_lazy=1" alt="Agent working step 1">
+        <img class="screenshot" src="https://mmbiz.qpic.cn/mmbiz_png/O6nOHWgQxUhga8SAYSVRqS06nED4PC5MHCJLbVntib9cZSrWQrqXFTSJWDhslvBpSjNrFVk5mNwmQXbUCmibXLcWesovE0HUOjOCfibwBO1aicw/640?wx_fmt=png&from=appmsg&tp=wxpic&wxfrom=5&wx_lazy=1" alt="Agent working step 2">
+        <img class="screenshot" src="https://mmbiz.qpic.cn/mmbiz_png/O6nOHWgQxUjicJ99qTIYGBGiaAMLjLhuxwJWpLrceydJcdpm3nXpcBcofZZTLXaHEiadwibUU56fFnUBiamHwia1HbkYBnhSuqSvxqdWKpZ0xL29E/640?wx_fmt=png&from=appmsg&tp=wxpic&wxfrom=5&wx_lazy=1" alt="Agent working step 3">
+        <img class="screenshot" src="https://mmbiz.qpic.cn/mmbiz_png/O6nOHWgQxUgORvNIPtfXZs0tWbxmDQIQYeayicbS7AoSpJmz0ZJ57EC38fAUuRibzwRJiaShpDFv545Wrb9ZOERjqpKhiagqePfb20wLNibBv2xE/640?wx_fmt=png&from=appmsg&tp=wxpic&wxfrom=5&wx_lazy=1" alt="Agent working step 4">
+        <img class="screenshot" src="https://mmbiz.qpic.cn/sz_mmbiz_png/O6nOHWgQxUgGAVIobZ2GXJufo6Eh46067h85xcY9BOUTU0kTzhZge8WsqeBrfyiaXfGXjx10gfYGXl3yz3sWlZcsJE0tha9RFSOfY6FMTaC8/640?wx_fmt=png&from=appmsg&tp=wxpic&wxfrom=5&wx_lazy=1" alt="Agent working step 5">
+        <img class="screenshot" src="https://mmbiz.qpic.cn/mmbiz_png/O6nOHWgQxUjDicgfibelRwnCLcuOia94Dy6NnymgjibKMWrMRicd4TicmibmgtDL1jwL4qB2TQKuWXT5AibSXg42GKlvZ5UQNvELfGjicbibfyxUBAFnQ/640?wx_fmt=png&from=appmsg&tp=wxpic&wxfrom=5&wx_lazy=1" alt="Agent working step 6">
+        <img class="screenshot" src="https://mmbiz.qpic.cn/sz_mmbiz_png/O6nOHWgQxUhxcHCxuAYM0uicRSrK5p9CPQkY7RxycV6GicCpzxmhJibo0tib0yQoH3QdYFSQbWAUXfoTJw5pia5KOY3QuhEqOzbiaPXKjLiaTwo4uw/640?wx_fmt=png&from=appmsg&tp=wxpic&wxfrom=5&wx_lazy=1" alt="Agent working step 7">
+        <img class="screenshot" src="https://mmbiz.qpic.cn/mmbiz_png/O6nOHWgQxUgQEzMBnyyuyhFKt3jRwmqnwLaTccMyZyHHMwia7XVibCPRp5RvLh9WlePEbjHLpmzHRnzAA7wPsfictKI1eecOImDRYLe02oGjbY/640?wx_fmt=png&from=appmsg&tp=wxpic&wxfrom=5&wx_lazy=1" alt="Agent working step 8">
+        <img class="screenshot" src="https://mmbiz.qpic.cn/mmbiz_png/O6nOHWgQxUhbFAiawFx5ibIRAkqZ1X2h3iaL4tArqc5qz2hBqWygWK2zH9YcwpfPX1Scq98boDLbdicHrA7nAf096MzOZyVtU6aADF6nZibqWtcY/640?wx_fmt=png&from=appmsg&tp=wxpic&wxfrom=5&wx_lazy=1" alt="Agent working step 9">
+        <p class="screenshot-caption">The VS Code agent reads the prompt file, asks a few questions, writes Python scripts, and successfully converts the PDF to Markdown</p>
+
+        <p>Here, VS Code read the prompt file, asked a few questions, then completed the operation and <strong>successfully converted the PDF to Markdown format</strong>.</p>
+
+        <p>The <code>.venv</code> folder now contains a lot of code &mdash; generated by AI &mdash; to accomplish the file format conversion.</p>
+
+        <hr class="divider">
+
+        <!-- Core Workflow -->
+        <h2>The Core Workflow</h2>
+
+        <p>By this point, you should already understand the AI agent workflow. The <strong>core idea</strong> is to write the task for the agent into a file (like <code>processFilesVS.md</code>), which contains:</p>
+
+        <div class="workflow-box">
+          <ul>
+            <li><strong>Input</strong> &mdash; where to find the files to process</li>
+            <li><strong>Instructions</strong> &mdash; what to do with them (e.g., convert to Markdown)</li>
+            <li><strong>Output</strong> &mdash; what the output should look like and where to save it</li>
+          </ul>
+        </div>
+
+        <p>Once you have this basic approach, you can <strong>modify and adapt the workflow</strong> to suit your specific tasks.</p>
+
+        <hr class="divider">
+
+        <!-- Demo 2: Trae -->
+        <h3>Demo 2: Using Trae to Convert PPTX to Markdown</h3>
+
+        <p>Back in Trae, we can see the folder already has many files from the VS Code demo.</p>
+
+        <img class="screenshot" src="https://mmbiz.qpic.cn/sz_mmbiz_png/O6nOHWgQxUhicGefDzswCZTD7baic3FuWk7aA85wQDmIss5Xs0X0CbCvNBkKanT2vibc1FeaIjnQENfEUQ08sLdibicCWROCwTiaDS8bTB0At3axE/640?wx_fmt=png&from=appmsg&tp=wxpic&wxfrom=5&wx_lazy=1" alt="Trae showing existing files">
+        <p class="screenshot-caption">Trae showing the same folder with files already created by VS Code</p>
+
+        <p>Create a new file called <code>processFilesTrae.md</code> with slightly modified content:</p>
+
+        <div class="code-block">/Users/simonwang/Documents/AIdemo/rawFiles
+
+read the files in the folder above
+
+write python scripts to process the PPTX and create a md file;
+ensure it is readable to human, with all the texts well organised;
+we can skip and ignore the images;
+name the md file with the same name as PPTX
+
+put the md file in
+/Users/simonwang/Documents/AIdemo/processed
+
+update a process.log to document what is being done</div>
+
+        <p><strong>Remember to set auto-save in both IDEs!</strong></p>
+
+        <img class="screenshot" src="https://mmbiz.qpic.cn/sz_mmbiz_png/O6nOHWgQxUjMlM93NMwTXZfI6xGS2SGAbeN8t9xvOU4dtFPsyO6X5ia6KDFibFZMnLAwk9scHPkhWaP99HlVYt6LYGlgIWiadUfEeUp5QZJLia8/640?wx_fmt=png&from=appmsg&tp=wxpic&wxfrom=5&wx_lazy=1" alt="Auto-save setting">
+        <p class="screenshot-caption">Remember to enable auto-save in your IDE settings</p>
+
+        <p>Now send the path <code>/Users/simonwang/Documents/AIdemo/processFilesTrae.md</code> to Trae:</p>
+
+        <img class="screenshot" src="https://mmbiz.qpic.cn/sz_mmbiz_png/O6nOHWgQxUhhmmUswd26mAcTZ8ibGpNEptticcA3LxlbVEffudBTlkB0sumiapdACoMPB5wj5Y8icxwyOWksZ1cK6zRQP2RHdSUjmKiaBRrCE3l0/640?wx_fmt=png&from=appmsg&tp=wxpic&wxfrom=5&wx_lazy=1" alt="Sending path to Trae">
+
+        <img class="screenshot" src="https://mmbiz.qpic.cn/mmbiz_png/O6nOHWgQxUgicJpWpGzeAdjfJ5TbfYibJY2ib4NicGEmSav4ibC730re5jX0b2VZJHbg8LDicS3Ct1jSWE25GmuaXD2ickuzHD89LZJLN24xZnujLg/640?wx_fmt=png&from=appmsg&tp=wxpic&wxfrom=5&wx_lazy=1" alt="Trae processing 1">
+
+        <img class="screenshot" src="https://mmbiz.qpic.cn/sz_mmbiz_png/O6nOHWgQxUiadpStVbh58viaJuUWnvDPX2JhE1cOLoB6Tuq1uM4XicP0DRNoeHcIGsr5b9tawAtWVB6gC3e2cSxmPS8VhFx8WGHXMJb4yCkHak/640?wx_fmt=png&from=appmsg&tp=wxpic&wxfrom=5&wx_lazy=1" alt="Trae processing 2">
+
+        <p><strong>Trae also successfully completed the task!</strong></p>
+
+        <img class="screenshot" src="https://mmbiz.qpic.cn/mmbiz_png/O6nOHWgQxUiarEVYUibu1174VQuWiaoZrlrLLV1tBTttrjHQu4pgeMibV2eiaiaia2L68lrEibHnFg5rqZMNKVHjIVlpVnQ8xWSaY7Zic7sxq2ET8JR4/640?wx_fmt=png&from=appmsg&tp=wxpic&wxfrom=5&wx_lazy=1" alt="Trae result">
+        <p class="screenshot-caption">Trae successfully converted the PPTX to Markdown</p>
+
+        <hr class="divider">
+
+        <!-- Summary -->
+        <h2>Summary</h2>
+
+        <p>The main purpose of this post is to introduce <strong>AI agent installation and basic operations</strong>. I hope you can successfully complete the steps above &mdash; converting PDF and PPTX files to Markdown. If you have any questions, please leave a comment. I'll also be adding more information in the comments section.</p>
+
+        <!-- CTA 2 -->
+        <div class="cta-section">
+          <p><strong>Can't attend live?</strong> Register anyway &mdash; you'll receive the recording and all learning materials.</p>
+          <a href="https://forms.office.com/PLACEHOLDER_LINK" class="cta-button" target="_blank">Register for the Workshop</a>
+          <p class="sponsor-note">Sponsored by the Trae team. Participants receive complimentary Trae tokens (valid for 3 days).</p>
+        </div>
+
+        <!-- Tags -->
+        <div class="tags">
+          <span class="tag">#AIAgents</span>
+          <span class="tag">#IDE</span>
+          <span class="tag">#Productivity</span>
+          <span class="tag">#AcademicWriting</span>
+          <span class="tag">#Innovation</span>
+          <span class="tag">#Workshop</span>
+          <span class="tag">#VSCode</span>
+          <span class="tag">#Trae</span>
+          <span class="tag">#HigherEducation</span>
+          <span class="tag">#EdTech</span>
+          <span class="tag">#DocumentProcessing</span>
+          <span class="tag">#Markdown</span>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</body>
+</html>
