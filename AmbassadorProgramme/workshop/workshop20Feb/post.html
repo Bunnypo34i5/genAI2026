@@ -262,6 +262,67 @@
 
     .workflow-box ul { margin-left: 1.25rem; }
 
+    /* Collapsible screenshot sections */
+    details.screenshot-group {
+      margin: 1rem 0;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    details.screenshot-group summary {
+      padding: 0.75rem 1rem;
+      background: #f8f9fa;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--primary-dark);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      user-select: none;
+      list-style: none;
+    }
+    details.screenshot-group summary::-webkit-details-marker { display: none; }
+    details.screenshot-group summary::before {
+      content: '\25B6';
+      font-size: 0.7rem;
+      transition: transform 0.2s;
+      flex-shrink: 0;
+    }
+    details.screenshot-group[open] summary::before {
+      transform: rotate(90deg);
+    }
+    details.screenshot-group summary:hover {
+      background: #eef2f7;
+    }
+    details.screenshot-group .screenshot-content {
+      padding: 0.75rem 1rem;
+    }
+    details.screenshot-group .screenshot-content .screenshot {
+      margin: 0.5rem 0;
+    }
+    details.screenshot-group .screenshot-content .screenshot-caption {
+      margin: 0 0 0.75rem;
+    }
+    .toggle-all-bar {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 0.5rem;
+    }
+    .toggle-all-btn {
+      background: none;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 0.3rem 0.9rem;
+      font-size: 0.8rem;
+      color: var(--primary);
+      cursor: pointer;
+      font-weight: 500;
+    }
+    .toggle-all-btn:hover {
+      background: #f0f7ff;
+    }
+
     /* Poster embed */
     .poster-embed {
       position: relative;
@@ -346,6 +407,10 @@
           <a href="poster_A4.html" target="_blank">Click to view full poster &rarr;</a>
         </div>
 
+        <div class="toggle-all-bar">
+          <button class="toggle-all-btn" onclick="toggleAllScreenshots(this)">Expand all screenshots</button>
+        </div>
+
         <p>This article covers the installation and basic operations of AI agent tools. The <strong>February 20 workshop</strong> will include live demonstrations and Q&amp;A. I strongly recommend that participants complete the setup steps below before the session. If you can't attend the live workshop, don't worry &mdash; through this post (including the comments section), you'll be able to access the video recording and all learning materials.</p>
 
         <!-- CTA 1 -->
@@ -424,8 +489,25 @@
 
         <p>Search "VS Code download" or "Trae install" in your browser, and follow the installation steps.</p>
 
-        <img class="screenshot" src="images/01-ide-layout-overview.png" alt="IDE layout overview">
-        <p class="screenshot-caption">The IDE layout: file explorer (left), file editor (centre top), terminal (centre bottom), AI agent chat (right)</p>
+        <details class="screenshot-group" open>
+          <summary>Screenshots: IDE Layout &amp; Initial Setup (5 images)</summary>
+          <div class="screenshot-content">
+            <img class="screenshot" src="images/01-ide-layout-overview.png" alt="IDE layout overview">
+            <p class="screenshot-caption">The IDE layout: file explorer (left), file editor (centre top), terminal (centre bottom), AI agent chat (right)</p>
+
+            <img class="screenshot" src="images/02-vscode-welcome-page.png" alt="VS Code initial page">
+            <p class="screenshot-caption">VS Code initial page</p>
+
+            <img class="screenshot" src="images/03-trae-initial-page.png" alt="Trae initial page">
+            <p class="screenshot-caption">Trae initial page</p>
+
+            <img class="screenshot" src="images/04-toggle-sidebar-icons.png" alt="Top-right icons">
+            <p class="screenshot-caption">Note the icons in the top-right corner: left icon opens the file browser &amp; tool panels, right icon toggles the AI agent chat panel</p>
+
+            <img class="screenshot" src="images/05-vscode-both-panels.png" alt="VS Code with both panels open">
+            <p class="screenshot-caption">VS Code with both panels open</p>
+          </div>
+        </details>
 
         <p>As shown above, the IDE has several key areas:</p>
         <ul>
@@ -435,30 +517,23 @@
           <li><strong>Right panel</strong> &mdash; AI agent chat area</li>
         </ul>
 
-        <img class="screenshot" src="images/02-vscode-welcome-page.png" alt="VS Code initial page">
-        <p class="screenshot-caption">VS Code initial page</p>
-
-        <img class="screenshot" src="images/03-trae-initial-page.png" alt="Trae initial page">
-        <p class="screenshot-caption">Trae initial page</p>
-
-        <img class="screenshot" src="images/04-toggle-sidebar-icons.png" alt="Top-right icons">
-        <p class="screenshot-caption">Note the icons in the top-right corner: left icon opens the file browser &amp; tool panels, right icon toggles the AI agent chat panel</p>
-
-        <img class="screenshot" src="images/05-vscode-both-panels.png" alt="VS Code with both panels open">
-        <p class="screenshot-caption">VS Code with both panels open</p>
-
         <!-- Step 2: Agent mode -->
         <h3>Step 2: Set Up AI Agent Chat</h3>
 
         <p>In <strong>VS Code</strong>, select <strong>"Agent"</strong> mode:</p>
 
-        <img class="screenshot" src="images/06-vscode-agent-mode.png" alt="VS Code Agent mode selection">
-        <p class="screenshot-caption">Select "Agent" mode in VS Code</p>
+        <details class="screenshot-group">
+          <summary>Screenshots: Agent &amp; Builder Mode Selection (2 images)</summary>
+          <div class="screenshot-content">
+            <img class="screenshot" src="images/06-vscode-agent-mode.png" alt="VS Code Agent mode selection">
+            <p class="screenshot-caption">Select "Agent" mode in VS Code</p>
 
-        <p>In <strong>Trae</strong>, select <strong>"Builder"</strong> mode:</p>
+            <p>In <strong>Trae</strong>, select <strong>"Builder"</strong> mode:</p>
 
-        <img class="screenshot" src="images/07-trae-builder-mode.png" alt="Trae Builder mode selection">
-        <p class="screenshot-caption">Select "Builder" mode in Trae</p>
+            <img class="screenshot" src="images/07-trae-builder-mode.png" alt="Trae Builder mode selection">
+            <p class="screenshot-caption">Select "Builder" mode in Trae</p>
+          </div>
+        </details>
 
         <p>Now try chatting with the AI agent in VS Code or Trae &mdash; <strong>say Hi!</strong></p>
 
@@ -475,19 +550,24 @@
 
         <p>When you try chatting with Trae without a folder selected, the agent will ask you to open one:</p>
 
-        <img class="screenshot" src="images/08-trae-open-folder-dialog.png" alt="Trae asks to open folder">
+        <details class="screenshot-group">
+          <summary>Screenshots: Opening &amp; Creating a Folder (4 images)</summary>
+          <div class="screenshot-content">
+            <img class="screenshot" src="images/08-trae-open-folder-dialog.png" alt="Trae asks to open folder">
 
-        <img class="screenshot" src="images/09-create-new-folder.png" alt="Trae folder prompt">
+            <img class="screenshot" src="images/09-create-new-folder.png" alt="Trae folder prompt">
 
-        <p>At this point, you can create a new folder:</p>
+            <p>At this point, you can create a new folder:</p>
 
-        <img class="screenshot" src="images/10-trae-trust-authors.png" alt="Create new folder">
-        <p class="screenshot-caption">Create a new folder for the demo</p>
+            <img class="screenshot" src="images/10-trae-trust-authors.png" alt="Create new folder">
+            <p class="screenshot-caption">Create a new folder for the demo</p>
 
-        <p>Both Trae and VS Code will ask you to authorize reading local files and will ask about file security. <strong>Be bold</strong> &mdash; nothing ventured, nothing gained! &#x1F604;</p>
+            <p>Both Trae and VS Code will ask you to authorize reading local files and will ask about file security. <strong>Be bold</strong> &mdash; nothing ventured, nothing gained! &#x1F604;</p>
 
-        <img class="screenshot" src="images/11-vscode-open-folder.png" alt="Authorization prompt">
-        <p class="screenshot-caption">Authorize the IDE to read local files</p>
+            <img class="screenshot" src="images/11-vscode-open-folder.png" alt="Authorization prompt">
+            <p class="screenshot-caption">Authorize the IDE to read local files</p>
+          </div>
+        </details>
 
         <p>Similarly, open this newly created folder in VS Code.</p>
 
@@ -500,14 +580,17 @@
 
         <p>Let me briefly explain the concept of <strong>machine-readable</strong>. PDF, Word, and PPTX are proprietary file formats developed by private companies. To read and edit them, you need tools developed by those companies (Adobe, Microsoft Office, etc.). If you send these files directly to an LLM, it will try to process them but often struggles. Therefore, <strong>we first need to clean these files into Markdown format</strong>. (For now, we'll skip handling images, charts, and complex formatting to keep things simple.)</p>
 
-        <img class="screenshot" src="images/12-vscode-create-rawfiles.png" alt="File conversion overview">
-
         <p>First, create a new folder called <code>rawFiles</code>, then drop a couple of files in it &mdash; a PDF and a PPTX:</p>
 
-        <img class="screenshot" src="images/13-rawfiles-pdf-pptx.png" alt="rawFiles folder with PDF and PPTX">
-
-        <img class="screenshot" src="images/14-rawfiles-context-menu.png" alt="Files inside rawFiles">
-        <p class="screenshot-caption">rawFiles folder containing a PDF and a PPTX</p>
+        <details class="screenshot-group">
+          <summary>Screenshots: Setting Up rawFiles Folder (3 images)</summary>
+          <div class="screenshot-content">
+            <img class="screenshot" src="images/12-vscode-create-rawfiles.png" alt="File conversion overview">
+            <img class="screenshot" src="images/13-rawfiles-pdf-pptx.png" alt="rawFiles folder with PDF and PPTX">
+            <img class="screenshot" src="images/14-rawfiles-context-menu.png" alt="Files inside rawFiles">
+            <p class="screenshot-caption">rawFiles folder containing a PDF and a PPTX</p>
+          </div>
+        </details>
 
         <!-- Demo 1: VS Code -->
         <h3>Demo 1: Using VS Code to Convert PDF to Markdown</h3>
@@ -520,14 +603,19 @@
           <p><strong>This operation is extremely important &mdash; it's arguably the core technique when using AI agents.</strong> Providing exact file paths tells the agent precisely where to find and place files.</p>
         </div>
 
-        <img class="screenshot" src="images/15-copy-path-menu.png" alt="Copying the folder path">
-        <p class="screenshot-caption">Copy-pasting the rawFiles folder path &mdash; the core technique</p>
+        <details class="screenshot-group">
+          <summary>Screenshots: Copy Path &amp; Edit Prompt File (3 images)</summary>
+          <div class="screenshot-content">
+            <img class="screenshot" src="images/15-copy-path-menu.png" alt="Copying the folder path">
+            <p class="screenshot-caption">Copy-pasting the rawFiles folder path &mdash; the core technique</p>
 
-        <img class="screenshot" src="images/16-edit-in-vscode.png" alt="VS Code icon to edit file">
-        <p class="screenshot-caption">Click the VS Code icon to edit the file</p>
+            <img class="screenshot" src="images/16-edit-in-vscode.png" alt="VS Code icon to edit file">
+            <p class="screenshot-caption">Click the VS Code icon to edit the file</p>
 
-        <img class="screenshot" src="images/17-processfiles-content.png" alt="processFilesVS.md content">
-        <p class="screenshot-caption">The content of processFilesVS.md</p>
+            <img class="screenshot" src="images/17-processfiles-content.png" alt="processFilesVS.md content">
+            <p class="screenshot-caption">The content of processFilesVS.md</p>
+          </div>
+        </details>
 
         <p>Here is the content of <code>processFilesVS.md</code>:</p>
 
@@ -544,23 +632,27 @@ create and update a process.log to document what is being done</div>
 
         <p>Next, we <strong>copy the file path</strong> of <code>processFilesVS.md</code> and <strong>send it to the AI agent</strong>:</p>
 
-        <img class="screenshot" src="images/18-processfiles-rightclick.png" alt="Sending path to VS Code agent">
+        <details class="screenshot-group">
+          <summary>Screenshots: VS Code Agent in Action (11 images)</summary>
+          <div class="screenshot-content">
+            <img class="screenshot" src="images/18-processfiles-rightclick.png" alt="Sending path to VS Code agent">
+            <img class="screenshot" src="images/19-processfiles-copypath.png" alt="Agent starts processing">
+            <p class="screenshot-caption">Sending the file path to the agent &mdash; and the magic begins!</p>
 
-        <img class="screenshot" src="images/19-processfiles-copypath.png" alt="Agent starts processing">
-        <p class="screenshot-caption">Sending the file path to the agent &mdash; and the magic begins!</p>
+            <p><strong>The moment of magic!</strong> Watch the agent work through the task:</p>
 
-        <p><strong>The moment of magic!</strong> Watch the agent work through the task:</p>
-
-        <img class="screenshot" src="images/21-agent-clarifying-intent.png" alt="Agent working step 1">
-        <img class="screenshot" src="images/22-agent-library-question.png" alt="Agent working step 2">
-        <img class="screenshot" src="images/23-agent-output-question.png" alt="Agent working step 3">
-        <img class="screenshot" src="images/24-agent-logging-question.png" alt="Agent working step 4">
-        <img class="screenshot" src="images/25-agent-working-plan.png" alt="Agent working step 5">
-        <img class="screenshot" src="images/26-agent-run-permission.png" alt="Agent working step 6">
-        <img class="screenshot" src="images/27-agent-run-script.png" alt="Agent working step 7">
-        <img class="screenshot" src="images/28-agent-done-results.png" alt="Agent working step 8">
-        <img class="screenshot" src="images/29-converted-markdown-preview.png" alt="Agent working step 9">
-        <p class="screenshot-caption">The VS Code agent reads the prompt file, asks a few questions, writes Python scripts, and successfully converts the PDF to Markdown</p>
+            <img class="screenshot" src="images/21-agent-clarifying-intent.png" alt="Agent working step 1">
+            <img class="screenshot" src="images/22-agent-library-question.png" alt="Agent working step 2">
+            <img class="screenshot" src="images/23-agent-output-question.png" alt="Agent working step 3">
+            <img class="screenshot" src="images/24-agent-logging-question.png" alt="Agent working step 4">
+            <img class="screenshot" src="images/25-agent-working-plan.png" alt="Agent working step 5">
+            <img class="screenshot" src="images/26-agent-run-permission.png" alt="Agent working step 6">
+            <img class="screenshot" src="images/27-agent-run-script.png" alt="Agent working step 7">
+            <img class="screenshot" src="images/28-agent-done-results.png" alt="Agent working step 8">
+            <img class="screenshot" src="images/29-converted-markdown-preview.png" alt="Agent working step 9">
+            <p class="screenshot-caption">The VS Code agent reads the prompt file, asks a few questions, writes Python scripts, and successfully converts the PDF to Markdown</p>
+          </div>
+        </details>
 
         <p>Here, VS Code read the prompt file, asked a few questions, then completed the operation and <strong>successfully converted the PDF to Markdown format</strong>.</p>
 
@@ -590,8 +682,13 @@ create and update a process.log to document what is being done</div>
 
         <p>Back in Trae, we can see the folder already has many files from the VS Code demo.</p>
 
-        <img class="screenshot" src="images/30-trae-existing-files.png" alt="Trae showing existing files">
-        <p class="screenshot-caption">Trae showing the same folder with files already created by VS Code</p>
+        <details class="screenshot-group">
+          <summary>Screenshot: Trae File Explorer (1 image)</summary>
+          <div class="screenshot-content">
+            <img class="screenshot" src="images/30-trae-existing-files.png" alt="Trae showing existing files">
+            <p class="screenshot-caption">Trae showing the same folder with files already created by VS Code</p>
+          </div>
+        </details>
 
         <p>Create a new file called <code>processFilesTrae.md</code> with slightly modified content:</p>
 
@@ -611,21 +708,24 @@ update a process.log to document what is being done</div>
 
         <p><strong>Remember to set auto-save in both IDEs!</strong></p>
 
-        <img class="screenshot" src="images/31-trae-auto-save.png" alt="Auto-save setting">
-        <p class="screenshot-caption">Remember to enable auto-save in your IDE settings</p>
+        <details class="screenshot-group">
+          <summary>Screenshots: Trae Builder in Action (5 images)</summary>
+          <div class="screenshot-content">
+            <img class="screenshot" src="images/31-trae-auto-save.png" alt="Auto-save setting">
+            <p class="screenshot-caption">Remember to enable auto-save in your IDE settings</p>
 
-        <p>Now send the path <code>/Users/simonwang/Documents/AIdemo/processFilesTrae.md</code> to Trae:</p>
+            <p>Now send the path <code>/Users/simonwang/Documents/AIdemo/processFilesTrae.md</code> to Trae:</p>
 
-        <img class="screenshot" src="images/32-trae-send-path.png" alt="Sending path to Trae">
+            <img class="screenshot" src="images/32-trae-send-path.png" alt="Sending path to Trae">
+            <img class="screenshot" src="images/33-trae-builder-processing.png" alt="Trae processing 1">
+            <img class="screenshot" src="images/34-trae-builder-completed.png" alt="Trae processing 2">
 
-        <img class="screenshot" src="images/33-trae-builder-processing.png" alt="Trae processing 1">
+            <p><strong>Trae also successfully completed the task!</strong></p>
 
-        <img class="screenshot" src="images/34-trae-builder-completed.png" alt="Trae processing 2">
-
-        <p><strong>Trae also successfully completed the task!</strong></p>
-
-        <img class="screenshot" src="images/35-trae-pptx-result.png" alt="Trae result">
-        <p class="screenshot-caption">Trae successfully converted the PPTX to Markdown</p>
+            <img class="screenshot" src="images/35-trae-pptx-result.png" alt="Trae result">
+            <p class="screenshot-caption">Trae successfully converted the PPTX to Markdown</p>
+          </div>
+        </details>
 
         <hr class="divider">
 
@@ -662,6 +762,13 @@ update a process.log to document what is being done</div>
   </div>
 
   <script>
+    function toggleAllScreenshots(btn) {
+      var groups = document.querySelectorAll('details.screenshot-group');
+      var anyOpen = Array.from(groups).some(function(d) { return d.open; });
+      groups.forEach(function(d) { d.open = !anyOpen; });
+      btn.textContent = anyOpen ? 'Expand all screenshots' : 'Collapse all screenshots';
+    }
+
     function scalePoster() {
       var container = document.getElementById('posterEmbed');
       var iframe = document.getElementById('posterFrame');
