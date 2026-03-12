@@ -1,0 +1,206 @@
+{
+  "metadata": {
+    "scraped_date": "2026-03-12T04:33:21.271302",
+    "base_url": "https://www.ehealth.gov.hk/tc/index.html",
+    "status": "completed"
+  },
+  "subsidy_schemes": [],
+  "amendment_bill_info": [
+    {
+      "keyword": "2025",
+      "snippet": "如何登記？醫護機構參與醫健通是以機構為單位了解更多醫護機構可透過3個簡單步驟進行登記了解更多醫護專業人員可如何參加？持有有效專業登記的醫護專業人員，如所執業的醫護機構已參加醫健通，便可向其機構申請開設醫健通帳戶。如你同時於不同醫護機構執業，你需分別於不同機構下開立醫健通醫護專業人員帳戶。了解更多為病人提供支援為病人核實身份取得病人的互通同意取覽及互通電子健康紀錄技術支援取覽醫健通重設用戶密碼香港身"
+    },
+    {
+      "keyword": "2025",
+      "snippet": "展開全部 +甚麼是醫健通？概覽展開此部份 +甚麼是醫健通？展開政府在2016年推出醫健通，作為一個全港性、以病人為本的電子平台，讓公私營醫護提供者在獲得病人授權後，可以取覽和互通病人的電子健康紀錄。政府在2024年逐步推行「醫健通+」5年計劃，將醫健通由一個健康紀錄互通系統轉型為集醫療數據互通、服務提供及流程管理於一身的綜合醫療資訊基建。醫健通的核心理念和原則為何？展開醫健通系統的設計和運作的核心"
+    }
+  ],
+  "connectivity_scheme": [],
+  "key_statistics": [
+    {
+      "keyword": "電子健康紀錄",
+      "snippet": "了解更多了解更多了解更多了解更多了解更多了解更多了解更多了解更多健康生活 e+自己嚟申請跨境醫健康紀錄個人資料夾你現在可以使用HA GO及智方便同時核實身份及完成醫健通登記醫健通+連通支援計劃 連通及存放電子健康紀錄至醫健通醫健通+連通認證計劃 讓市民個人健康紀錄盡在掌握！為16歲以下子女一站式登記醫健通醫健通訊第二十六期"
+    }
+  ],
+  "links_found": [
+    {
+      "text": "關閉",
+      "url": "javascript:void(0);",
+      "is_internal": false
+    },
+    {
+      "text": "下載",
+      "url": "javascript:void(0);",
+      "is_internal": false
+    },
+    {
+      "text": "了解更多",
+      "url": "https://app.ehealth.gov.hk/promulgation?lang=tc",
+      "is_internal": false
+    },
+    {
+      "text": "了解更多",
+      "url": "https://app.ehealth.gov.hk/cross-boundary-health-record?lang=tc",
+      "is_internal": false
+    },
+    {
+      "text": "了解更多",
+      "url": "https://app.ehealth.gov.hk/personal-folder?lang=zh-HK",
+      "is_internal": false
+    },
+    {
+      "text": "了解更多",
+      "url": "https://app.ehealth.gov.hk/getting-started?lang=tc",
+      "is_internal": false
+    },
+    {
+      "text": "了解更多",
+      "url": "https://www.ehealth.gov.hk/tc/healthcare-provider-and-professional/resources/ehealth-plus-connectivity-support-scheme/index.html",
+      "is_internal": true
+    },
+    {
+      "text": "了解更多",
+      "url": "https://app.ehealth.gov.hk/accreditation-scheme?lang=tc",
+      "is_internal": false
+    },
+    {
+      "text": "了解更多",
+      "url": "https://app.ehealth.gov.hk/caregiver?lang=tc",
+      "is_internal": false
+    },
+    {
+      "text": "了解更多",
+      "url": "https://www.ehealth.gov.hk/tc/whats-new/ehealth-news/ehealth_news_26/index.html",
+      "is_internal": true
+    },
+    {
+      "text": "進階搜尋",
+      "url": "https://www.ehealth.gov.hk/tc/index.html",
+      "is_internal": true
+    },
+    {
+      "text": "進階搜尋",
+      "url": "https://www.ehealth.gov.hk/tc/index.html",
+      "is_internal": true
+    },
+    {
+      "text": "以醫護機構可存放的電子健康紀錄類別搜尋",
+      "url": "https://www.ehealth.gov.hk/tc/you-and-your-family/how-to-register/register-in-person/search-sharable-data.html",
+      "is_internal": true
+    },
+    {
+      "text": "尋找電子健康紀錄登記站",
+      "url": "https://www.ehealth.gov.hk/tc/you-and-your-family/how-to-register/register-in-person/ehr-registration-centres.html",
+      "is_internal": true
+    },
+    {
+      "text": "已獲認證可存放電子健康紀錄的醫護機構",
+      "url": "https://www.ehealth.gov.hk/tc/you-and-your-family/how-to-register/register-in-person/ehr-hcp-data-deposit.html",
+      "is_internal": true
+    },
+    {
+      "text": "特區政府或醫管局管理或控制的醫療機構",
+      "url": "https://www.ehealth.gov.hk/tc/you-and-your-family/search-hcp/gcf.html",
+      "is_internal": true
+    },
+    {
+      "text": "如何登記",
+      "url": "https://www.ehealth.gov.hk/tc/you-and-your-family/how-to-register/index.html",
+      "is_internal": true
+    },
+    {
+      "text": "核實身份",
+      "url": "https://www.ehealth.gov.hk/tc/you-and-your-family/identity-verification.html",
+      "is_internal": true
+    },
+    {
+      "text": "互通同意",
+      "url": "https://www.ehealth.gov.hk/tc/you-and-your-family/sharing-consent/",
+      "is_internal": true
+    },
+    {
+      "text": "更多內容",
+      "url": "https://www.ehealth.gov.hk/tc/you-and-your-family/",
+      "is_internal": true
+    },
+    {
+      "text": "如何登記",
+      "url": "https://www.ehealth.gov.hk/tc/healthcare-provider-and-professional/how-to-register/index.html",
+      "is_internal": true
+    },
+    {
+      "text": "支援病人",
+      "url": "https://www.ehealth.gov.hk/tc/healthcare-provider-and-professional/support/patient-support/index.html",
+      "is_internal": true
+    },
+    {
+      "text": "技術支援",
+      "url": "https://www.ehealth.gov.hk/tc/healthcare-provider-and-professional/support/technical-support/index.html",
+      "is_internal": true
+    },
+    {
+      "text": "更多內容",
+      "url": "https://www.ehealth.gov.hk/tc/healthcare-provider-and-professional/index.html",
+      "is_internal": true
+    },
+    {
+      "text": "",
+      "url": "https://www.ehealth.gov.hk/tc/whats-ehealth/ehealth-plus-development/index.html",
+      "is_internal": true
+    },
+    {
+      "text": "了解更多",
+      "url": "https://www.ehealth.gov.hk/tc/whats-ehealth/ehealth-plus-development/index.html",
+      "is_internal": true
+    },
+    {
+      "text": "",
+      "url": "https://www.ehealth.gov.hk/tc/whats-ehealth/access-control.html",
+      "is_internal": true
+    },
+    {
+      "text": "了解更多",
+      "url": "https://www.ehealth.gov.hk/tc/whats-ehealth/access-control.html",
+      "is_internal": true
+    },
+    {
+      "text": "",
+      "url": "https://www.ehealth.gov.hk/tc/you-and-your-family/sharing-consent/index.html",
+      "is_internal": true
+    },
+    {
+      "text": "如何選擇",
+      "url": "https://www.ehealth.gov.hk/tc/you-and-your-family/sharing-consent/index.html",
+      "is_internal": true
+    },
+    {
+      "text": "",
+      "url": "https://www.ehealth.gov.hk/tc/you-and-your-family/how-to-register/register-in-person/mobile-registration-teams.html",
+      "is_internal": true
+    },
+    {
+      "text": "更多登記地點",
+      "url": "https://www.ehealth.gov.hk/tc/you-and-your-family/how-to-register/register-in-person/mobile-registration-teams.html",
+      "is_internal": true
+    },
+    {
+      "text": "保安及私隱",
+      "url": "https://www.ehealth.gov.hk/tc/whats-ehealth/security-and-privacy.html",
+      "is_internal": true
+    }
+  ],
+  "raw_sections": [
+    {
+      "url": "https://www.ehealth.gov.hk/tc/healthcare-provider-and-professional",
+      "title": "醫護機構和專業人員 - 醫健通",
+      "content_length": 826,
+      "preview": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n醫護機構和專業人員 - 醫健通\n\n\n\n抱歉，您的瀏覽器不支持JavaScript！\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n如何登記？\n\n\n                                        醫護機構參與醫健通是以機構為單位\n了解更多\n\n\n\n\n                                        醫護機構可透過3個簡單步驟進行登記\n了解更多\n\n\n\n\n\n\n\n\n\n醫護專業人員可如何參加？\n\n\n                          "
+    },
+    {
+      "url": "https://www.ehealth.gov.hk/tc/faq",
+      "title": "常見問題 - 醫健通",
+      "content_length": 34741,
+      "preview": "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n常見問題 - 醫健通\n\n\n\n\n\n抱歉，您的瀏覽器不支持JavaScript！\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n展開全部 +\n\n\n\n甚麼是醫健通？\n\n\n概覽\n\n展開此部份 +\n\n\n\n\n\n甚麼是醫健通？\n展開\n\n\n\n\t政府在2016年推出醫健通，作為一個全港性、以病人為本的電子平台，讓公私營醫護提供者在獲得病人授權後，可以取覽和互通病人的電子健康紀錄。政府在2024年逐步推行「醫健通+」5年計劃，將醫健通由一個健康紀錄互通系統轉型為集醫療數據互通、服務提供及流程管理於一身的綜合醫療資訊基建。\n\n\n\n\n\n醫健通的核心理念和原則為何"
+    }
+  ]
+}
